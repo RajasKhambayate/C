@@ -6,15 +6,14 @@
 //IDE: Visual Studio code                                                                         //
 //================================================================================================//
 //Author/Coder: Rajas Khambayate                                                                  //
-//Date: 16th September 2025                                                                       //
-//Day: Sunday                                                                                     //
+//Date: 16th May 2025                                                                             //
+//Day: Friday                                                                                     //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 #include<stdio.h>//for printf and scanf functions .
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-//Num_Power() Function: Calculates fValue raised to the power of iPower.                          //
-//                      Assumes iPower is a non-negative integer.                                 //
+//Num_Power() Function: This function is used to calculate the number rays to some power .        //
 //================================================================================================//
 //Parameters:                                                                                     //
 //1. float(fValue) : The value to be powered on .                                                 //
@@ -82,7 +81,7 @@ int main()
         fRet = Num_Power(fNo,iPower);
         printf("\n%f^%d = %f\n",fNo,iPower,fRet);
 
-        printf("Would you like to try Num_Power one more time ? >>Press for :: YES:ANY_NUMBER OR NO:0 <<==>>Your Choice : ");
+        printf("Would you like to try Num_Power one more time? >Press for->YES:ANY_NUMBER OR NO:0 <=>Your Choice : ");
         scanf("%f",&fRet);
 
         if(fRet == 0)
