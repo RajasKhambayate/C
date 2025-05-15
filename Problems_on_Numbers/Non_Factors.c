@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-//Description: This program displays non-factors of a number.                                        //
+//Description: This program displays non-factors of a number .                                    //
 //================================================================================================//
 //Language: C                                                                                     //
 //Compiler : GNU GCC                                                                              //
