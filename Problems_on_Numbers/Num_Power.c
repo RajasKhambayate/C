@@ -1,60 +1,101 @@
-//This code display the number rays to some power.
-#include<stdio.h>
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//Description: This program is used for calculating a number rays to some +ve integer power .     //
+//================================================================================================//
+//Language: C                                                                                     //
+//Compiler : GNU GCC                                                                              //
+//IDE: Visual Studio code                                                                         //
+//================================================================================================//
+//Author/Coder: Rajas Khambayate                                                                  //
+//Date: 16th September 2025                                                                       //
+//Day: Sunday                                                                                     //
+////////////////////////////////////////////////////////////////////////////////////////////////////
+#include<stdio.h>//for printf and scanf functions .
 
-int Num_Power(int iValue,int Power)
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//Num_Power() Function: Calculates fValue raised to the power of iPower.                          //
+//                      Assumes iPower is a non-negative integer.                                 //
+//================================================================================================//
+//Parameters:                                                                                     //
+//1. float(fValue) : The value to be powered on .                                                 //
+//2. int(iPower) : The non-negative integer power value.                                          //
+//================================================================================================//
+//Return: float(fAns)                                                                             //
+//================================================================================================//
+//Local variables:                                                                                //
+//1. float(fAns) : To store the answer of the power calculation .                                 //
+//================================================================================================//
+//Algorithm:                                                                                      //
+//1. If 'fValue' is 0, return 0 (as 0^iPower = 0).                                                //
+//2. If 'iPower' is 0, return 1.0 (as fValue^0 = 1).                                              //
+//3. Initialize 'fAns' to 1.0.                                                                    //
+//4. Loop 'iCnt' from 0 up to 'iPower - 1':                                                       //
+//   a. 'fAns = fAns * fValue'.                                                                   //
+//5. Return 'fAns'.                                                                               //
+////////////////////////////////////////////////////////////////////////////////////////////////////
+float Num_Power(float fValue,int iPower)
 {
-    if(iValue == 0)//(Value == 0) && (Power == +,0)
+    if(fValue == 0)
     {
-        return 0;
+        return 0.0f;
     }
-    else if((iValue != 0) && (Power == 0))//(Value != 0) && (Power == 0)
+    if(iPower == 0)
     {
-        return 1;
+        return 1.0f;
     }
-    else if(iValue == 1)//(Value == 1) && (Power == +,0)
-    {
-        return 1;
-    }
-    else if((iValue > 0) && (Power > 0))//(Value == +) && (Power == +)
-    {
-        int iAns = 1;
 
-        for(int iCnt = 0;iCnt < Power;iCnt++)
-        {
-            iAns = iAns * iValue;
-        }
+    float fAns = 1.0f;
 
-        return iAns;
+    for(int iCnt = 0;iCnt < iPower;iCnt++)
+    {
+        fAns = fAns * fValue;
     }
+
+    return fAns;
 }
 
+
+//Starting point of application
 int main()
 {
-    int iNo = -1;
-    int iPower = -1;
+    float fNo = 0;
+    int iPower = 0;
+    float fRet = 0;
 
-    while((iNo < 0) || (iPower < 0))
+    while(1)
     {
-        printf("\nEnter the integer value : ");
-        scanf("%d",&iNo);
+        printf("Enter the value to be used for power calculation : ");
+        scanf("%f",&fNo);
 
-
-        printf("Enter the positive integer power : ");
-        scanf("%d",&iPower);
-
-        if(iNo < 0)
+        do
         {
-            printf("!!Please enter positive value!!\n");
+            printf("Enter the non-negative integer power: ");
+            scanf("%d",&iPower);
+
+            if(iPower < 0)
+            {
+                printf("Power cannot be negative. Please enter a non-negative integer power.\n");
+            }
         }
+        while(iPower < 0);
 
-        if(iPower < 0)
+        fRet = Num_Power(fNo,iPower);
+        printf("\n%f^%d = %f\n",fNo,iPower,fRet);
+
+        printf("Would you like to try Num_Power one more time ? >>Press for :: YES:ANY_NUMBER OR NO:0 <<==>>Your Choice : ");
+        scanf("%f",&fRet);
+
+        if(fRet == 0)
         {
-            printf("!!Please enter positive power!!\n");
+            printf("====================================================================================================\n");
+            printf("Thank you for using Rajas's Num_Power program .\n");
+            break;
+        }
+        else
+        {
+            printf("====================================================================================================\n");
+            continue;
         }
     }
-
-    int iRet = Num_Power(iNo,iPower);
-    printf("\n%d^%d = %d\n",iNo,iPower,iRet);
 
     return 0;
 }
