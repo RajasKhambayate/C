@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-//Description: This code displays non-factors of a number.                                        //
+//Description: This program displays non-factors of a number.                                        //
 //================================================================================================//
 //Language: C                                                                                     //
 //Compiler : GNU GCC                                                                              //
@@ -53,12 +53,12 @@ int main()
             scanf("%d",&iNo);
         }
 
-        printf("Would you like to try Non_Factors one more time ? >>Press for :: YES:ANY_NUMBER OR NO:0 <<==>>Your Choice : ");
+        printf("Would you like to try Non_Factors one more time? >Press for->YES:ANY_NUM OR NO:0 <=>Your Choice : ");
         scanf("%d",&iNo);
 
         if(iNo == 0)
         {
-            printf("====================================================================================================\n");
+            printf("\n====================================================================================================\n");
             printf("Thank you for using Rajas's Non_Factors program .\n");
             break;
         }
