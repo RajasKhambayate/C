@@ -38,6 +38,7 @@ float Num_Power(float fValue,int iPower)
     {
         return 0.0f;
     }
+
     if(iPower == 0)
     {
         return 1.0f;
