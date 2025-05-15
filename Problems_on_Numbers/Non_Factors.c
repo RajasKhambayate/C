@@ -13,7 +13,7 @@
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-//Non_Factors() Function: This function is used to calculate the number rays to some power .      //
+//Non_Factors() Function: This function displays non-factors of a number.                         //
 //================================================================================================//
 //Parameters:                                                                                     //
 //1. int(iValue) : The value for calculating factors .                                            //
