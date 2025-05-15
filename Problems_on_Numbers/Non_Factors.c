@@ -56,8 +56,6 @@ int main()
         printf("Would you like to try Non_Factors one more time ? >>Press for :: YES:ANY_NUMBER OR NO:0 <<==>>Your Choice : ");
         scanf("%d",&iNo);
 
-        
-
         if(iNo == 0)
         {
             printf("====================================================================================================\n");
