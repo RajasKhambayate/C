@@ -13,7 +13,7 @@
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-//Display_Non_Factors() Function: This function displays non-factors of a number.                         //
+//Display_Non_Factors() Function: This function displays non-factors of a number.                 //
 //================================================================================================//
 //Parameters:                                                                                     //
 //1. int(iValue) : The value for calculating factors .                                            //
