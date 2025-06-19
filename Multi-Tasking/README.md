@@ -1,2 +1,2 @@
-# C/Linked-List
+# C/Multi-tasking
 This direcitory contains programs based on 'Multi-tasking' in C programming language.
