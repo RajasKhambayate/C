@@ -1,2 +1,2 @@
 # C/Multi-tasking
-This direcitory contains programs based on 'Multi-tasking' in C programming language.
+This directory contains programs based on 'Multi-tasking' in C programming language.
