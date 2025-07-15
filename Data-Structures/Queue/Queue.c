@@ -75,14 +75,14 @@ typedef struct sNode ** PPsNODE;//Pointer to the pointer of the structure node
 //Enqueue() Function: Inserts a new node at the end of the Queue .                                //
 //================================================================================================//
 //Parameters:                                                                                     //
-//1. PPsNODE : Address of the first pointer of the linked list .                                  //
+//1. PPsNODE : Address of the first pointer of the queue .                                        //
 //2. int : Data to be inserted in the new node .                                                  //
 //================================================================================================//
 //Return: void                                                                                    //
 //================================================================================================//
 //Local variables:                                                                                //
 //1. PsNODE : Pointer to the new node .                                                           //
-//2. PsNODE : temporary pointer to traverse the linked list .                                     //
+//2. PsNODE : temporary pointer to traverse the queue .                                           //
 //================================================================================================//
 //Algorithm:                                                                                      //
 //1. Allocate memory for the new node .                                                           //
@@ -126,12 +126,12 @@ void Enqueue(PPsNODE pHead,int iNo)
 //Dequeue() Function: Deletes a node from beginning of the Queue .                                //
 //================================================================================================//
 //Parameters:                                                                                     //
-//1. PPsNODE : Address of the first pointer of the linked list .                                  //
+//1. PPsNODE : Address of the first pointer of the queue .                                        //
 //================================================================================================//
 //Return: void                                                                                    //
 //================================================================================================//
 //Local variables:                                                                                //
-//1. PsNODE : temporary pointer to traverse the linked list .                                     //
+//1. PsNODE : temporary pointer to traverse the queue .                                           //
 //================================================================================================//
 //Algorithm:                                                                                      //
 //1. If the queue is empty, return .                                                              //
@@ -164,18 +164,18 @@ void Dequeue(PPsNODE pHead)
 //Display() Function: Displays the entire queue .                                                 //
 //================================================================================================//
 //Parameters:                                                                                     //
-//1. PsNODE : Address of the first pointer of the linked list .                                   //
+//1. PsNODE : Address of the first pointer of the queue .                                         //
 //================================================================================================//
 //Return: void                                                                                    //
 //================================================================================================//
 //Local variables: None                                                                           //
 //================================================================================================//
 //Algorithm:                                                                                      //
-//1. Traverse the linked list till the last node and display the data of each node.               //
+//1. Traverse the queue till the last node and display the data of each node.                     //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void Display(PsNODE pHead)
 {
-    printf("Elements from linked list are : \n\n");
+    printf("Elements from queue are : \n\n");
 
     while(pHead != NULL)
     {
@@ -189,12 +189,12 @@ void Display(PsNODE pHead)
 //Count() Function: Counts number of node in the Queue .                                          //
 //================================================================================================//
 //Parameters:                                                                                     //
-//1. PsNODE : Address of the first pointer of the linked list .                                   //
+//1. PsNODE : Address of the first pointer of the queue .                                         //
 //================================================================================================//
 //Return: integer                                                                                 //
 //================================================================================================//
 //Local variables:                                                                                //
-//1. int : Size of the linked list .                                                              //
+//1. int : Size of the queue .                                                                    //
 //================================================================================================//
 //Algorithm:                                                                                      //
 //1. Initialize a counter variable to 0.                                                          //
