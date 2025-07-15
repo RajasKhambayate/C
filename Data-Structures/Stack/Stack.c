@@ -186,7 +186,7 @@ void Display(PsNODE pHead)
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-//Count() Function: Counts number of node in the Queue .                                          //
+//Count() Function: Counts number of node in the Stack .                                          //
 //================================================================================================//
 //Parameters:                                                                                     //
 //1. PsNODE : Address of the first pointer of the stack .                                         //
