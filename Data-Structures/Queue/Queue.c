@@ -37,7 +37,7 @@
 struct sNode//Structure declaration for node in Queue
 {
     int iData;//Data of the node
-    struct sNode *pNext;//Pointer to the next node in the linked list
+    struct sNode *pNext;//Pointer to the next node in the Queue
 };//sNODE, *PsNODE, **PPsNODE;
 
 typedef struct sNode sNODE;//Structure Node
