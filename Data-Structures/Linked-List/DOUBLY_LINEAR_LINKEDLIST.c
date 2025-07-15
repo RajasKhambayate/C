@@ -1636,9 +1636,6 @@ PsNODE FindKthNodeFromEnd(PsNODE pHead)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void Manual()
 {
-    int iMode = 0;
-    char cChoosenFunction = '\0';
-
     printf("::::MANUAL FOR RAJAS's DOUBLY LINEAR LINKED LIST APPLICATION::::\n\n\n");
 
 
