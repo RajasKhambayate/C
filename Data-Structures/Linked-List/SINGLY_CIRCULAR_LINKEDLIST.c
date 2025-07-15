@@ -1618,9 +1618,6 @@ PsNODE FindKthNodeFromEnd(PsNODE pHead,PsNODE pTail)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void Manual()
 {
-    int iMode = 0;
-    char cChoosenFunction = '\0';
-
     printf("::::MANUAL FOR RAJAS's SINGLY CIRCULAR LINKED LIST APPLICATION::::\n\n\n");
 
 
