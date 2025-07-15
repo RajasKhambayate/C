@@ -1,155 +1,321 @@
+//1===============================================================================================//
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-//AUTHOR      : RAJAS SANTOSH KHAMBAYATE                                                          //
-//DATE        : 16 MAY 2022                                                                       //
-//DAY         : MONDAY                                                                            //
-//DESCRIPTION : THIS PROGRAM IS USED TO DEMONSTRATE QUEUE CONCEPTS.(DATA STRUCTURE)               //
-//INPUT       : INTEGERS                                                                          //
-//OUTPUT      : QUEUE[FIFO]{OF INTEGERS - NON GENERIC}                                            //
-//LANGUAGE    : C PROGRAMMING LANGUAGE                                                            //
+//Description:  Queue is a linear data structure that follows the First In First Out (FIFO)       //
+//principle. This program demonstrates the implementation of a simple Queue .                     //
+//================================================================================================//
+//Language: C                                                                                     //
+//Compiler : GNU GCC                                                                              //
+//IDE: Visual Studio code                                                                         //
+//================================================================================================//
+//Author/Coder: Rajas Khambayate                                                                  //
+//Date: 02th April 2025                                                                           //
+//Day: Wednesday                                                                                  //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-#include<stdio.h>
-#include<stdlib.h>
 
-struct node
+//1===============================================================================================//
+
+
+
+
+
+//2===============================================================================================//
+
+#include<stdio.h>// For printf() and scanf() Functions, etc
+#include<stdlib.h>// For malloc() Function
+#include<stdbool.h>// For boolean data type
+#include<string.h>// For string functions
+
+//2===============================================================================================//
+
+
+
+
+
+//3===============================================================================================//
+
+struct sNode//Structure declaration for node in Queue
 {
-    int data;
-    struct node *next;
-};
+    int iData;//Data of the node
+    struct sNode *pNext;//Pointer to the next node in the linked list
+};//sNODE, *PsNODE, **PPsNODE;
 
-typedef struct node NODE;
-typedef struct node * PNODE;
-typedef struct node ** PPNODE;
+typedef struct sNode sNODE;//Structure Node
+typedef struct sNode * PsNODE;//Pointer to the structure node
+typedef struct sNode ** PPsNODE;//Pointer to the pointer of the structure node
 
-void Enqueue(PPNODE head,int iValue)
+//3===============================================================================================//
+
+
+
+
+
+//4===============================================================================================//
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                             Queue                                              //
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//Functions:                                                                                      //
+//================================================================================================//
+//Insertion:                                                                                      //
+//1. Enqueue() : Inserts a new node at the end of the queue .                                     //
+//================================================================================================//
+//Deletion:                                                                                       //
+//2. Dequeue() : Deletes the first node of the queue .                                            //
+//================================================================================================//
+//Traversal:                                                                                      //
+//3. Display() : Displays the contents of the queue .                                             //
+//4. Count() : Counts the number of nodes in the queue .                                          //
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//Enqueue() Function: Inserts a new node at the end of the Queue .                                //
+//================================================================================================//
+//Parameters:                                                                                     //
+//1. PPsNODE : Address of the first pointer of the linked list .                                  //
+//2. int : Data to be inserted in the new node .                                                  //
+//================================================================================================//
+//Return: void                                                                                    //
+//================================================================================================//
+//Local variables:                                                                                //
+//1. PsNODE : Pointer to the new node .                                                           //
+//2. PsNODE : temporary pointer to traverse the linked list .                                     //
+//================================================================================================//
+//Algorithm:                                                                                      //
+//1. Allocate memory for the new node .                                                           //
+//2. Fill the new node with the data .                                                            //
+//3. If the queue is empty, update the first pointer with the address of the                      //
+//   new node .                                                                                   //
+//4. If the queue contains at least one node, traverse till the last node and                     //
+//   update the Next pointer of the last node with the address of the new node.                   //
+////////////////////////////////////////////////////////////////////////////////////////////////////
+void Enqueue(PPsNODE pHead,int iNo)
 {
-    PNODE newnode = NULL;
+    //Initialize a new node
+    PsNODE PsNewNode = NULL;
+    PsNewNode = (PsNODE)malloc(sizeof(sNODE));
 
-    newnode = (PNODE)malloc(sizeof(NODE));
+    //Filling the node with data
+    PsNewNode -> iData = iNo;
+    PsNewNode -> pNext = NULL;
 
-    newnode -> data = iValue;
-    newnode -> next = NULL;
-
-    if(*head == NULL)
+    if(*pHead == NULL)//If queue is empty
     {
-        *head = newnode;
+        *pHead = PsNewNode;
     }
-    else
+    else//If queue contains atleast one node
     {
-        PNODE temp = NULL;
-        temp = *head;
+        PsNODE ptemp = *pHead;
 
-        while(temp -> next != NULL)
+        while(ptemp -> pNext != NULL)
         {
-            temp = temp -> next;
+            ptemp = ptemp -> pNext;
         }
 
-        temp -> next = newnode;
+        ptemp -> pNext = PsNewNode;
     }
 
-    printf("Node is inserted in queue successfully.\n\n");
+    printf("Node with data %d inserted at the end of the Queue\n",iNo);
 }
 
-void Dequeue(PPNODE head)
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//Dequeue() Function: Deletes a node from beginning of the Queue .                                //
+//================================================================================================//
+//Parameters:                                                                                     //
+//1. PPsNODE : Address of the first pointer of the linked list .                                  //
+//================================================================================================//
+//Return: void                                                                                    //
+//================================================================================================//
+//Local variables:                                                                                //
+//1. PsNODE : temporary pointer to traverse the linked list .                                     //
+//================================================================================================//
+//Algorithm:                                                                                      //
+//1. If the queue is empty, return .                                                              //
+//2. If the queue contains at least one node, store the address of the first node in a            //
+//   temporary pointer and update the first pointer with the Next pointer of the first node and   //
+//   free the memory of the temporary pointer.                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////
+void Dequeue(PPsNODE pHead)
 {
-    if(*head == NULL)
+    if(*pHead == NULL)//If queue is empty
     {
-        printf("Queue is already empty.\n");
+        printf("Queue is empty\n");
         return;
     }
+    else//If queue contains atleast one node
+    {
+        PsNODE ptemp = *pHead;
 
-    PNODE temp = NULL;
-    temp = *head;
+        *pHead = ptemp -> pNext;
 
-    int iDeletedValue = 0;
-    iDeletedValue = (*head) -> data;
+        printf("Node with data %d deleted from the beginning of the queue\n",ptemp -> iData);
 
-    (*head) = (*head) -> next;
-    free(temp);
-
-    printf("Deleted number is : %d\n\n",iDeletedValue);
+        free(ptemp);
+        ptemp = NULL;
+    }
 }
 
-void Display(PNODE head)
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//Display() Function: Displays the entire queue .                                                 //
+//================================================================================================//
+//Parameters:                                                                                     //
+//1. PsNODE : Address of the first pointer of the linked list .                                   //
+//================================================================================================//
+//Return: void                                                                                    //
+//================================================================================================//
+//Local variables: None                                                                           //
+//================================================================================================//
+//Algorithm:                                                                                      //
+//1. Traverse the linked list till the last node and display the data of each node.               //
+////////////////////////////////////////////////////////////////////////////////////////////////////
+void Display(PsNODE pHead)
 {
-    if(head == NULL)
+    printf("Elements from linked list are : \n\n");
+
+    while(pHead != NULL)
     {
-        printf("Queue is empty.\n");
-        return;
+        printf("| %d |\n",pHead -> iData);
+        pHead = pHead -> pNext;
     }
-
-    printf("Elements from queue are : \n");
-
-    while(head != NULL)
-    {
-        printf("| %d |-> ",head -> data);
-        head = head -> next;
-    }
-
-    printf("\n\n");
 }
 
-int CountNode(PNODE head)
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//Count() Function: Counts number of node in the Queue .                                          //
+//================================================================================================//
+//Parameters:                                                                                     //
+//1. PsNODE : Address of the first pointer of the linked list .                                   //
+//================================================================================================//
+//Return: integer                                                                                 //
+//================================================================================================//
+//Local variables:                                                                                //
+//1. int : Size of the linked list .                                                              //
+//================================================================================================//
+//Algorithm:                                                                                      //
+//1. Initialize a counter variable to 0.                                                          //
+//2. Traverse the queue till the last node and increment the counter variable by 1 for each       //
+//   node.                                                                                        //
+////////////////////////////////////////////////////////////////////////////////////////////////////
+int Count(PsNODE pHead)
 {
-    int iCnt = 0;
-
-    while(head != NULL)
+    if(pHead == NULL)
     {
-        iCnt++;
-        head = head -> next;
+        printf("Queue is empty\n");
+        return 0;
     }
 
-    return iCnt;
+    int iSize  = 0;
+
+    while(pHead != NULL)
+    {
+        iSize++;
+        pHead = pHead -> pNext;
+    }
+
+    return iSize;
 }
+
+//4===============================================================================================//
+
+
+
+
+
+//5===============================================================================================//
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//Manual() Function: A guide for the usage of Queue .                                             //
+//================================================================================================//
+//Parameters: None                                                                                //
+//================================================================================================//
+//Return: void                                                                                    //
+//================================================================================================//
+//Local variables: None                                                                           //
+//================================================================================================//
+//Algorithm: None                                                                                 //
+////////////////////////////////////////////////////////////////////////////////////////////////////
+void Manual()
+{
+    printf("::::MANUAL FOR RAJAS's QUEUE APPLICATION::::\n\n\n");
+
+    printf("INSERTION\n");
+    printf("For Enqueuing data at LAST position       : press A\n\n");
+
+    printf("DELETION\n");
+    printf("For Dequeuing data from FIRST position    : press B\n\n");
+
+    printf("COUNT\n");
+    printf("To Count no. of nodes in Queue            : press H\n\n");
+
+    printf("DISPLAY\n");
+    printf("To View data in Queue                     : press G\n\n");
+
+    printf("MANUAL\n");
+    printf("For Manual                                : press M\n\n");
+
+    printf("EXIT\n");
+    printf("To exit the Queue App                     : press Z\n\n");
+}
+
 
 int main()
 {
+    PsNODE pHead1 = NULL;
+
     int iNo = 0;
-    char Choice = 'A';
-    PNODE First = NULL;
+    int iRet = 0;
 
-    printf("!!WELCOME TO RAJAS QUEUE APPLICATION!!\n\n");
+    char cChoiceFunction = '\0';
 
-    printf("A : For inserting number Queue\n");
-    printf("B : For deleting number from Queue\n");
-    printf("C : For reviewing Queue\n");
-    printf("D : For counting number of elements in Queue\n");
-    printf("E : For terminating the application\n\n");
 
-    while(Choice != 'E')
+    printf("Welcome to Rajas's Application of Queue\n\n");
+
+    while(1)
     {
-        printf("Please select a choice : ");
-        scanf(" %c", &Choice);
+        printf("====================================================================================================\n");
+        printf("M : For Manual\n");
+        printf("Z : For Exiting the Queue Application\n");
+        printf("Enter the function to be operation : ");
+        scanf("%s", &cChoiceFunction);
 
-        if((Choice == 'A') || (Choice == 'a'))
+        switch(cChoiceFunction)
         {
-            printf("Enter the number to be inserted in queue : ");
-            scanf("%d",&iNo);
-            Enqueue(&First,iNo);
-            Display(First);
-        }
-        else if((Choice == 'B') || (Choice == 'b'))
-        {
-            Dequeue(&First);
-            Display(First);
-        }
-        else if((Choice == 'C') || (Choice == 'c'))
-        {
-            Display(First);
-        }
-        else if((Choice == 'D') || (Choice == 'd'))
-        {
-            int iRet = CountNode(First);
-            printf("Number of elements in queue are : %d\n\n",iRet); 
-        }
-        else if((Choice == 'E') || (Choice == 'e'))
-        {
-            break;
-        }
-        else
-        {
-            printf("Invalid command\n\n");
+            case 'A':
+            case 'a':
+                printf("Enter the number to be inserted in Queue : ");
+                scanf("%d",&iNo);
+                Enqueue(&pHead1,iNo);
+                break;
+            case 'B':
+            case 'b':
+                Dequeue(&pHead1);
+                break;
+            case 'H':
+            case 'h':
+                iRet = Count(pHead1);
+                printf("Number of nodes in the queue are : %d\n",iRet);
+                break;
+            case 'G':
+            case 'g':
+                Display(pHead1);
+                break;
+            case 'M':
+            case 'm':
+                Manual();
+                break;
+            case 'Z':
+            case 'z':
+                printf("Exiting the RAJAS's QUEUE application\n");
+                return 0;
+            default:
+                printf("Invalid choice\n");
         }
     }
-
-    printf("!!THANKS FOR USING RAJAS QUEUE APPLICATION!!\n\n");
 }
+
+//5===============================================================================================//
