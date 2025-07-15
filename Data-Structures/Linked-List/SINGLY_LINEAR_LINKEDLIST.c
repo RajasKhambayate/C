@@ -105,7 +105,7 @@ void Display(PsNODE pHead)
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-//Count() Function: Counts number of node in  the singly linear linked list .                     //
+//Count() Function: Counts number of node in the singly linear linked list .                      // 
 //================================================================================================//
 //Parameters:                                                                                     //
 //1. PsNODE : Address of the first pointer of the linked list .                                   //
@@ -1546,7 +1546,6 @@ PsNODE FindKthNodeFromEnd(PsNODE pHead)
 
 //5===============================================================================================//
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //Manual() Function: A guide for the usage of singly-linear-linked-list .                         //
 //================================================================================================//
@@ -1560,9 +1559,6 @@ PsNODE FindKthNodeFromEnd(PsNODE pHead)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void Manual()
 {
-    int iMode = 0;
-    char cChoosenFunction = '\0';
-
     printf("::::MANUAL FOR RAJAS's SINGLY LINEAR LINKED LIST APPLICATION::::\n\n\n");
 
 
@@ -1969,6 +1965,5 @@ int main()
 
     return 0;//End of program
 }
-
 
 //5===============================================================================================//
