@@ -105,7 +105,7 @@ void Display(PsNODE pHead)
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-//Count() Function: Counts number of node in the singly linear linked list .                      // 
+//Count() Function: Counts number of node in the singly linear linked list .                      //
 //================================================================================================//
 //Parameters:                                                                                     //
 //1. PsNODE : Address of the first pointer of the linked list .                                   //
