@@ -101,9 +101,8 @@ void Display(PsNODE pHead,PsNODE pTail)
         return;
     }
 
-    printf("Elements from linked list are : \n\n");
-
     PsNODE ptemp = pHead;
+    printf("Elements from linked list are : \n\n");
 
     printf("-> ");
 
