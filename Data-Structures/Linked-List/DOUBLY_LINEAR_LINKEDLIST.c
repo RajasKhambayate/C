@@ -96,8 +96,6 @@ typedef struct sNode ** PPsNODE;//Pointer to the pointer of the structure node
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void Display(PsNODE pHead)
 {
-    printf("Elements from linked list are : \n\n");
-
     if(pHead == NULL)
     {
         printf("Linkedlist is empty\n");
@@ -106,6 +104,7 @@ void Display(PsNODE pHead)
     }
 
     PsNODE ptemp = pHead;
+    printf("Elements from linked list are : \n\n");
 
     ///////////////////////Display in reverse order//////////////////////
 
