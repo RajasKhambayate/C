@@ -314,11 +314,10 @@ void InsertAtPosition(PPsNODE pHead,int iNo,int iPosition)
 
     //Counting number of nodes
     int iSize = Count(*pHead);
+    int iCnt = 0;
 
     if((iPosition < 1) || (iPosition > (iSize + 1)))//If position is invalid
     {
-        int iCnt = 0;
-
         while(iCnt <= 2)
         {
             printf("Invalid position\n");
@@ -367,7 +366,7 @@ void InsertAtPosition(PPsNODE pHead,int iNo,int iPosition)
     {
         PsNODE ptemp = *pHead;
 
-        for(int iCnt = 1;iCnt < (iPosition - 1);iCnt++)
+        for(iCnt = 1;iCnt < (iPosition - 1);iCnt++)
         {
             ptemp = ptemp -> pNext;
         }
