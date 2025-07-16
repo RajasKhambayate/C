@@ -570,10 +570,11 @@ void DeleteAtPosition(PPsNODE pHead,PPsNODE pTail,int iPosition)
 
         ptempdelete = ptemp -> pNext;
         ptemp -> pNext = ptemp -> pNext -> pNext;
+
+        printf("Node with data %d deleted from position %d of the singly circular linked list\n",ptempdelete -> iData,iPosition);
+
         free(ptempdelete);
     }
-
-    printf("Node deleted from position %d of the singly circular linked list\n",iPosition);
 }
 
 //4===============================================================================================//
