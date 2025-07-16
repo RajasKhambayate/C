@@ -359,6 +359,13 @@ void DeleteFirst(PPsNODE pHead)
         printf("Linkedlist is empty\n");
         return;
     }
+    else if((*pHead) -> pNext == NULL)//If linkedlist contains one node
+    {
+        printf("Node with data %d deleted from the beginning of the singly linear linked list\n",(*pHead) -> iData);
+
+        free(*pHead);
+        *pHead = NULL;
+    }
     else//If linkedlist contains atleast one node
     {
         PsNODE ptemp = *pHead;
