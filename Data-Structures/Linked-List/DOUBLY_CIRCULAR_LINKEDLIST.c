@@ -516,6 +516,7 @@ void DeleteLast(PPsNODE pHead,PPsNODE pTail)
 //1. int : Size of the linked list .                                                              //
 //2. int : Counter variable .                                                                     //
 //3. PsNODE : temporary pointer to traverse the linked list .                                     //
+//4. PsNODE : temporary pointer to delete the node .                                              //
 //================================================================================================//
 //Algorithm:                                                                                      //
 //1. If the linked list is empty, display a message that the linked list is empty and return .    //
