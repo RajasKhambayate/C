@@ -429,8 +429,6 @@ void DeleteFirst(PPsNODE pHead,PPsNODE pTail)
 
         free(*pHead);
         *pHead = NULL;
-
-        return;
     }
     else//If linkedlist contains multiple nodes
     {
