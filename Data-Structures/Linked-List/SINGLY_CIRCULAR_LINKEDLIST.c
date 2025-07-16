@@ -441,8 +441,6 @@ void DeleteLast(PPsNODE pHead,PPsNODE pTail)
         *pHead = NULL;
 
         printf("Node with data %d deleted from the singly circular linked list\n",(*pHead) -> iData);
-
-        return;
     }
     else//If linkedlist contains atleast two node
     {
