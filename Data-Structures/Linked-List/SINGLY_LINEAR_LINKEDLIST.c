@@ -93,6 +93,13 @@ typedef struct sNode ** PPsNODE;//Pointer to the pointer to the structure node
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void Display(PsNODE pHead)
 {
+    if(pHead == NULL)
+    {
+        printf("Linkedlist is empty\n");
+        printf("NULL\n");
+        return;
+    }
+
     printf("Elements from linked list are : \n\n");
 
     while(pHead != NULL)
