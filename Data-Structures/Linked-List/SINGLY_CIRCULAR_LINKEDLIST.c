@@ -112,7 +112,6 @@ void Display(PsNODE pHead,PsNODE pTail)
         ptemp = ptemp -> pNext;
     }while(ptemp != pHead);
     printf("\n");
-
 }
 
 
