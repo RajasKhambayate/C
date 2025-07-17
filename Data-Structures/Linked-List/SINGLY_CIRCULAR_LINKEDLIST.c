@@ -1466,7 +1466,8 @@ PsNODE FindKthNodeFromStart(PsNODE pHead, PsNODE pTail)
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-//FindKthNodeFromMiddle() Function: returns the kth node from middle in linkedlist .              //
+//FindKthNodeFromMiddle() Function: returns the kth node from middle in singly circular linked    //
+// list .                                                                                         //
 //================================================================================================//
 //Parameters:                                                                                     //
 //1. PsNODE : Address of the first pointer of the linked list .                                   //
