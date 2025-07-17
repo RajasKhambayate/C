@@ -1280,6 +1280,7 @@ void DeleteList(PPsNODE pHead,PPsNODE pTail)
     {
         if(*pHead == *pTail)
         {
+            printf("Node with data %d deleted from the doubly circular linked list\n",(*pHead) -> iData);
             free(*pHead);
 
             *pHead = NULL;
@@ -1291,6 +1292,7 @@ void DeleteList(PPsNODE pHead,PPsNODE pTail)
         }
 
         *pHead = (*pHead) -> pNext; // Move the head pointer to the next node
+        printf("Node with data %d deleted from the doubly circular linked list\n",(*pHead) -> pPrev -> iData);
         free((*pHead) -> pPrev); // Free the memory of the previous node
 
         (*pHead) -> pPrev = *pTail;
@@ -1300,6 +1302,7 @@ void DeleteList(PPsNODE pHead,PPsNODE pTail)
         if(((*pTail) -> pPrev) != NULL) // If the head pointer is NULL, break the loop
         {
             *pTail = (*pTail) -> pPrev; // Move the tail pointer to the previous node
+            printf("Node with data %d deleted from the doubly circular linked list\n",(*pTail) -> pNext -> iData);
             free((*pTail) -> pNext); // Free the memory of the next node
         }
 
