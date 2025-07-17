@@ -1462,7 +1462,7 @@ PsNODE FindKthNodeFromStart(PsNODE pHead)
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-//FindKthNodeFromMiddle() Function: returns the kth node from middle in linkedlist .              //
+//FindKthNodeFromMiddle() Function: returns the kth node from middle in doubly linear linked list //
 //================================================================================================//
 //Parameters:                                                                                     //
 //1. PsNODE : Address of the first pointer of the linked list .                                   //
@@ -1550,7 +1550,7 @@ PsNODE FindKthNodeFromMiddle(PsNODE pHead)
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-//FindKthNodeFromEnd() Function: returns the kth node from end in linkedlist .                    //
+//FindKthNodeFromEnd() Function: returns the kth node from end in doubly linear linked list .     //
 //================================================================================================//
 //Parameters:                                                                                     //
 //1. PsNODE : Address of the first pointer of the linked list .                                   //
