@@ -1690,9 +1690,7 @@ PsNODE FindKthNodeFromEnd(PsNODE pHead,PsNODE pTail)
         return NULL;
     }
 
-    int iIndex = iSize - iKth + 1;
-
-    for(iCnt = 1;iCnt < (iKth);iCnt++)
+    for(iCnt = 1;iCnt < iKth;iCnt++)
     {
         ptemp = ptemp -> pPrev;
     }
