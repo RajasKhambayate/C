@@ -1963,10 +1963,6 @@ int main()
                         scanf("%d",&iNo1);
 
                         bRet = Search(pHead1,pTail1,iNo1);
-                        if(bRet == false)
-                        {
-                            printf("There is no entry of '%d' in doubly linear linked list\n",iNo1);
-                        }
 
                         break;
                     case 'J':
