@@ -1210,8 +1210,7 @@ void DeleteAfter(PPsNODE pHead,PPsNODE pTail,int iPosition)
 //================================================================================================//
 //Return: void                                                                                    //
 //================================================================================================//
-//Local variables:                                                                                //
-//1. PsNODE : temporary pointer to traverse the linked list .                                     //
+//Local variables: None                                                                           //
 //================================================================================================//
 //Algorithm:                                                                                      //
 //1. If the linked list is empty, display a message that the linked list is empty and return .    //
@@ -1229,11 +1228,12 @@ void DeleteList(PPsNODE pHead,PPsNODE pTail)
         return;
     }
 
-    PsNODE ptempdelete = *pHead;
-
     do
     {
         *pHead = (*pHead) -> pNext;
+
+        printf("Node with data %d deleted from the singly circular linked list\n",(*pTail) -> pNext -> iData);
+
         free((*pTail) -> pNext);
         (*pTail) -> pNext = *pHead;
     }while(*pHead != *pTail);
