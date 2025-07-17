@@ -1743,6 +1743,8 @@ int main()
     int iPosition1 = 0;//Variable to store the position of the node
     int iExitMode = 0;//Variable to store the exit mode of the application
 
+    bool bRet = false;
+
     printf("Welcome to Rajas's Application of Singly-Circular-LinkedList\n\n");
 
     while(1)
@@ -1886,7 +1888,7 @@ int main()
                         printf("Enter the value to be searched in the linked list : ");
                         scanf("%d",&iNo1);
 
-                        Search(pHead1,pTail1,iNo1);
+                        bRet = Search(pHead1,pTail1,iNo1);
 
                         break;
                     case 'J':
