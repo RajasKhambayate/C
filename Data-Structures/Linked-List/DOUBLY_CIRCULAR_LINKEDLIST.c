@@ -700,6 +700,7 @@ bool Search(PsNODE pHead,PsNODE pTail,int iSearch)
         iPosition++;
     }
 
+    printf("Element %d not found in singly circular linked list\n",iSearch);
     return false;
 }
 
