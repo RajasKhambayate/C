@@ -874,10 +874,25 @@ void InsertBefore(PPsNODE pHead,PPsNODE pTail,int iNo,int iPosition)
     }
 
     int iSize = Count(*pHead,*pTail);
+    int iCnt = 0;
 
     if((iPosition < 1) || (iPosition > (iSize)))
     {
-        printf("Invalid position\n");
+        for(iCnt = 0;iCnt <= 2;iCnt++)
+        {
+            printf("Invalid position\n");
+            printf("Enter valid position : \n");
+            scanf("%d",&iPosition);
+
+            if((iPosition >= 1) && (iPosition <= (iSize)))
+            {
+                InsertBefore(pHead,pTail,iNo,iPosition);
+                return;
+            }
+        }
+
+        printf("Wrong input entered 3 times , call function again .\n");
+
         return;
     }
 
@@ -898,7 +913,7 @@ void InsertBefore(PPsNODE pHead,PPsNODE pTail,int iNo,int iPosition)
     {
         PsNODE ptemp = *pHead;
 
-        for(int iCnt = 1;iCnt < (iPosition - 1);iCnt++)
+        for(iCnt = 1;iCnt < (iPosition - 1);iCnt++)
         {
             ptemp = ptemp -> pNext;
         }
@@ -950,10 +965,25 @@ void InsertAfter(PPsNODE pHead,PPsNODE pTail,int iNo,int iPosition)
     }
 
     int iSize = Count(*pHead,*pTail);
+    int iCnt = 0;
 
     if((iPosition < 1) || (iPosition > (iSize)))
     {
-        printf("Invalid position\n");
+        for(iCnt = 0;iCnt <= 2;iCnt++)
+        {
+            printf("Invalid position\n");
+            printf("Enter valid position : \n");
+            scanf("%d",&iPosition);
+
+            if((iPosition >= 1) && (iPosition <= (iSize)))
+            {
+                InsertAfter(pHead,pTail,iNo,iPosition);
+                return;
+            }
+        }
+
+        printf("Wrong input entered 3 times , call function again .\n");
+
         return;
     }
 
@@ -975,7 +1005,7 @@ void InsertAfter(PPsNODE pHead,PPsNODE pTail,int iNo,int iPosition)
     {
         PsNODE ptemp = *pHead;
 
-        for(int iCnt = 1;iCnt <= (iPosition - 1);iCnt++)
+        for(iCnt = 1;iCnt <= (iPosition - 1);iCnt++)
         {
             ptemp = ptemp -> pNext;
         }
