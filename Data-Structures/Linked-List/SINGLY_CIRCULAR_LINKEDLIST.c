@@ -1352,7 +1352,7 @@ void Reverse(PPsNODE pHead,PPsNODE pTail)
 
     (*pTail) -> pNext = *pHead;
 
-    printf("Linkedlist's data has been reversed\n");
+    printf("Singly Circular Linked-List's data has been reversed\n");
 }
 
 
