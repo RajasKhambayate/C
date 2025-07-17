@@ -928,7 +928,21 @@ void InsertBefore(PPsNODE pHead,PPsNODE pTail,int iNo,int iPosition)
 
     if((iPosition < 1) || (iPosition > (iSize)))
     {
-        printf("Invalid position\n");
+        for(iCnt = 0;iCnt <= 2;iCnt++)
+        {
+            printf("Invalid position\n");
+            printf("Enter valid position : \n");
+            scanf("%d",&iPosition);
+
+            if((iPosition >= 1) && (iPosition <= (iSize)))
+            {
+                InsertBefore(pHead,pTail,iNo,iPosition);
+                return;
+            }
+        }
+
+        printf("Wrong input entered 3 times , call function again .\n");
+
         return;
     }
 
@@ -1010,7 +1024,21 @@ void InsertAfter(PPsNODE pHead,PPsNODE pTail,int iNo,int iPosition)
 
     if((iPosition < 1) || (iPosition > (iSize)))
     {
-        printf("Invalid position\n");
+        for(iCnt = 0;iCnt <= 2;iCnt++)
+        {
+            printf("Invalid position\n");
+            printf("Enter valid position : \n");
+            scanf("%d",&iPosition);
+
+            if((iPosition >= 1) && (iPosition <= (iSize)))
+            {
+                InsertAfter(pHead,pTail,iNo,iPosition);
+                return;
+            }
+        }
+
+        printf("Wrong input entered 3 times , call function again .\n");
+
         return;
     }
 
