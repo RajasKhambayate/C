@@ -622,6 +622,7 @@ bool Search(PsNODE pHead,int iSearch)
         iPosition++;
     }
 
+    printf("Element %d not found in singly linear linked list\n",iSearch);
     return false;
 }
 
