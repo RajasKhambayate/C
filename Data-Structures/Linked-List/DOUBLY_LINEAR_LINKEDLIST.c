@@ -1246,7 +1246,9 @@ void DeleteList(PPsNODE pHead)
         ptempdelete = *pHead;
         *pHead = (*pHead) -> pNext;
 
-        free(ptempdelete);
+        printf("Node with data %d deleted from the doubly circular linked list\n",(*pTail) -> pNext -> iData);
+
+        free((*pTail) -> pNext -> iData);
     }
 
     free(*pHead);
