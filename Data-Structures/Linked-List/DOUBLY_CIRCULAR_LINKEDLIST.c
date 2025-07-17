@@ -1316,8 +1316,8 @@ void DeleteList(PPsNODE pHead,PPsNODE pTail)
 //SortAscending() Function: Sorts the doubly circular linked list in ascending order .            //
 //================================================================================================//
 //Parameters:                                                                                     //
-//1. PsNODE : Address of the first pointer of the linked list .                                  //
-//2. PsNODE : Address of the last pointer of the linked list .                                   //
+//1. PsNODE : Address of the first pointer of the linked list .                                   //
+//2. PsNODE : Address of the last pointer of the linked list .                                    //
 //================================================================================================//
 //Return: void                                                                                    //
 //================================================================================================//
@@ -1418,7 +1418,8 @@ void Reverse(PPsNODE pHead,PPsNODE pTail)
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-//FindMiddleNode() Function: returns the node of the middle node from the linkedlist .            //
+//FindMiddleNode() Function: returns the node of the middle node from the doubly circular linked  //
+// list .                                                                                         //
 //================================================================================================//
 //Parameters:                                                                                     //
 //1. PsNODE : Address of the first pointer of the linked list .                                   //
@@ -1459,7 +1460,7 @@ PsNODE FindMiddleNode(PsNODE pHead,PsNODE pTail)
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-//FindKthNodeFromStart() Function: returns the kth node from start in linkedlist .                //
+//FindKthNodeFromStart() Function: returns the kth node from start in doubly circular linkedlist .//
 //================================================================================================//
 //Parameters:                                                                                     //
 //1. PsNODE : Address of the first pointer of the linked list .                                   //
@@ -1528,7 +1529,7 @@ PsNODE FindKthNodeFromStart(PsNODE pHead,PsNODE pTail)
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-//FindKthNodeFromMiddle() Function: returns the kth node from middle in linkedlist .              //
+//FindKthNodeFromMiddle() Function: returns the kth node from middle in doubly circular linkedlist//
 //================================================================================================//
 //Parameters:                                                                                     //
 //1. PsNODE : Address of the first pointer of the linked list .                                   //
