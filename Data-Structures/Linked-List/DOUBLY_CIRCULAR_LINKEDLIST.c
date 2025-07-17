@@ -588,6 +588,7 @@ void DeleteAtPosition(PPsNODE pHead,PPsNODE pTail,int iPosition)
         printf("Node with data %d deleted from beginning of the doubly circular linked list\n",(*pTail) -> pNext -> iData,iPosition);
 
         free((*pTail) -> pNext);
+        free((*pHead) -> pPrev);
     }
     else if(iPosition == iSize)//If position last
     {
@@ -596,6 +597,7 @@ void DeleteAtPosition(PPsNODE pHead,PPsNODE pTail,int iPosition)
         printf("Node with data %d deleted from end of the doubly circular linked list\n",(*pTail) -> pNext -> iData,iPosition);
 
         free((*pTail) -> pNext);
+        free((*pHead) -> pPrev);
     }
     else//Random position
     {
@@ -612,6 +614,9 @@ void DeleteAtPosition(PPsNODE pHead,PPsNODE pTail,int iPosition)
 
         free(ptemp -> pNext -> pPrev);
         ptemp -> pNext -> pPrev = ptemp;
+
+        free((*pTail) -> pNext);
+        free((*pHead) -> pPrev);
     }
 
     (*pHead) -> pPrev = *pTail; // Update the previous pointer of the head to point to the new tail
