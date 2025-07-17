@@ -1238,10 +1238,18 @@ void DeleteList(PPsNODE pHead,PPsNODE pTail)
         (*pTail) -> pNext = *pHead;
     }while(*pHead != *pTail);
 
-    free(*pHead);
-    free(*pTail);
+    if((*pHead) == (*pTail))
+    {
+        printf("Node with data %d deleted from the singly circular linked list\n",(*pTail) -> iData);
+
+        free((*pTail));
+        *pTail = NULL;
+    }
 
     *pHead = NULL;
+    free(*pHead);
+
+    free(*pTail);
     *pTail = NULL;
 
     printf("Singly Circular Linked List has been deleted\n");
