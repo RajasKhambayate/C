@@ -659,6 +659,7 @@ bool Search(PsNODE pHead,int iSearch)
         iPosition++;
     }
 
+    printf("Element %d not found in doubly linear linked list\n",iSearch);
     return false;
 }
 
