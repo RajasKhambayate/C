@@ -1120,7 +1120,7 @@ void DeleteBefore(PPsNODE pHead,int iPosition)
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-//DeleteAfter() Function: Remove a node after a specified node .                                  //
+//DeleteAfter() Function: Remove a node after a specified node from singly linear linked list.    //
 //================================================================================================//
 //Parameters:                                                                                     //
 //1. PPsNODE : Address of the first pointer of the linked list .                                  //
