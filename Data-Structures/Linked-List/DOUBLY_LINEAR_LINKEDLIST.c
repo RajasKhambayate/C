@@ -103,19 +103,19 @@ void Display(PsNODE pHead)
         return;
     }
 
-    PsNODE ptemp = pHead;
     printf("Elements from linked list are : \n\n");
 
-    ///////////////////////Display in reverse order//////////////////////
+    ///////////////////////Display in serial order//////////////////////
 
     printf("Elements from linked list in serial order are : \n");
 
     printf("NULL ");
-    while(ptemp != NULL)
+    while(pHead -> pNext != NULL)
     {
-        printf("<- | %d | -> ",ptemp -> iData);
-        ptemp = ptemp -> pNext;
+        printf("<- | %d | -> ",pHead -> iData);
+        pHead = pHead -> pNext;
     }
+    printf("<- | %d | -> ",pHead -> iData);
     printf("NULL\n\n");
 
 
@@ -123,17 +123,13 @@ void Display(PsNODE pHead)
 
     printf("Elements from linked list in reverse order are : \n");
 
-    while(pHead -> pNext != NULL)
-    {
-        pHead = pHead -> pNext;
-    }
-
     printf("NULL ");
-    while(pHead != NULL)
+    while(pHead -> pPrev != NULL)
     {
         printf("<- | %d | -> ",pHead -> iData);
         pHead = pHead -> pPrev;
     }
+    printf("<- | %d | -> ",pHead -> iData);
     printf("NULL\n");
 
 }
