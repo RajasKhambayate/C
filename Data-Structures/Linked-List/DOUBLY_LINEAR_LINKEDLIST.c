@@ -777,7 +777,6 @@ void UpdateNoForPosition(PsNODE pHead,int iUpdate,int iPosition)
         iCnt++;
     }
 
-    printf("Element %d not found in doubly linear linked list\n",iUpdate);
     Display(pHead);
 }
 
