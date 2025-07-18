@@ -809,8 +809,9 @@ void Concat(PPsNODE pHead1,PPsNODE pHead2)
 //================================================================================================//
 //Local variables:                                                                                //
 //1. PsNODE : temporary pointer to traverse the linked list .                                     //
-//2. int : Size of the linked list .                                                              //
-//3. int : Counter variable .                                                                     //
+//2. PsNODE : Pointer to store the new node                                                       //
+//3. int : Size of the linked list .                                                              //
+//4. int : Counter variable .                                                                     //
 //================================================================================================//
 //Algorithm:                                                                                      //
 //1. If the linked list is empty, display a message that the linked list is empty.                //
@@ -895,8 +896,9 @@ void InsertBefore(PPsNODE pHead,int iNo,int iPosition)
 //================================================================================================//
 //Local variables:                                                                                //
 //1. PsNODE : temporary pointer to traverse the linked list .                                     //
-//2. int : Size of the linked list .                                                              //
-//3. int : Counter variable .                                                                     //
+//2. PsNODE : Pointer to store the new node                                                       //
+//3. int : Size of the linked list .                                                              //
+//4. int : Counter variable .                                                                     //
 //================================================================================================//
 //Algorithm:                                                                                      //
 //1. If the linked list is empty, display a message that the linked list is empty.                //
