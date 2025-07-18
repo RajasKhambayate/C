@@ -146,6 +146,13 @@ void Dequeue(PPsNODE pHead)
         printf("Queue is empty\n");
         return;
     }
+    else if(((*pHead) -> pNext == NULL))
+    {
+        printf("Node with data %d deleted from the beginning of the queue\n",(*pHead) -> iData);
+
+        free(*pHead);
+        *pHead = NULL;
+    }
     else//If queue contains atleast one node
     {
         PsNODE ptemp = *pHead;
