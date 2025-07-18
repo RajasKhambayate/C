@@ -1175,10 +1175,10 @@ void DeleteAfter(PPsNODE pHead,int iPosition)
         return;
     }
 
+    PsNODE ptemp = *pHead;
+
     if(iPosition == (iSize - 1))
     {
-        PsNODE ptemp = *pHead;
-
         while(ptemp -> pNext -> pNext != NULL)
         {
             ptemp = ptemp -> pNext;
@@ -1191,7 +1191,6 @@ void DeleteAfter(PPsNODE pHead,int iPosition)
     }
     else
     {
-        PsNODE ptemp = *pHead;
         PsNODE ptempdelete = NULL;
 
         for(iCnt = 1;iCnt < (iPosition);iCnt++)
