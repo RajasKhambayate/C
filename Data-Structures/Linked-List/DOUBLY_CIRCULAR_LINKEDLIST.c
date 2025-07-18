@@ -824,9 +824,6 @@ void UpdateNoForPosition(PsNODE pHead,PsNODE pTail,int iUpdate,int iPosition)
         pHead = pHead -> pNext;
         iCnt++;
     }
-
-    printf("Element %d not found in doubly linear linked list\n",iUpdate);
-    Display(pHead,pTail);
 }
 
 
