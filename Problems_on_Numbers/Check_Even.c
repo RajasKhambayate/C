@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-//Description: This program checks weather a number is even or odd .                                 //
+//Description: This program checks weather a number is even or odd .                              //
 //================================================================================================//
 //Language: C                                                                                     //
 //Compiler : GNU GCC                                                                              //
