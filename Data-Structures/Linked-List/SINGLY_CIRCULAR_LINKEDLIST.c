@@ -25,7 +25,6 @@
 #include<stdio.h>// For printf() and scanf() Functions, etc
 #include<stdlib.h>// For malloc() Function
 #include<stdbool.h>// For boolean data type
-#include<string.h>// For string functions
 
 //2===============================================================================================//
 
@@ -88,29 +87,17 @@ typedef struct sNode ** PPsNODE;//Pointer to the pointer of the structure node
 //Return: void                                                                                    //
 //================================================================================================//
 //Local variables: None                                                                           //
-//================================================================================================//
-//Algorithm:                                                                                      //
-//1. Traverse the linked list till the last node and display the data of each node.               //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void Display(PsNODE pHead,PsNODE pTail)
 {
-    if((pHead == NULL) && (pTail == NULL))
-    {
-        printf("Linkedlist is empty\n");
-        printf("NULL\n");
-        return;
-    }
-
-    PsNODE ptemp = pHead;
     printf("Elements from linked list are : \n\n");
 
     printf("-> ");
-
     do
     {
-        printf("| %d | -> ",ptemp -> iData);
-        ptemp = ptemp -> pNext;
-    }while(ptemp != pHead);
+        printf("| %d | -> ",pHead -> iData);
+        pHead = pHead -> pNext;
+    }while(pHead != pTail -> pNext);
     printf("\n");
 }
 
@@ -126,29 +113,16 @@ void Display(PsNODE pHead,PsNODE pTail)
 //================================================================================================//
 //Local variables:                                                                                //
 //1. int : Size of the linked list .                                                              //
-//2. PsNODE : Pointer to traverse the linked list .                                               //
-//================================================================================================//
-//Algorithm:                                                                                      //
-//1. Initialize a counter variable to 0.                                                          //
-//2. Traverse the linked list till the last node and increment the counter variable by 1 for each //
-//   node.                                                                                        //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 int Count(PsNODE pHead,PsNODE pTail)
 {
-    if((pHead == NULL) && (pTail == NULL))
-    {
-        printf("Linkedlist is empty\n");
-        return 0;
-    }
-
-    PsNODE ptemp = pHead;
     int iSize  = 0;
 
     do
     {
         iSize++;
-        ptemp = ptemp -> pNext;
-    }while(ptemp != pHead);
+        pHead = pHead -> pNext;
+    }while(pHead != pTail -> pNext);
 
     return iSize;
 }
@@ -166,14 +140,6 @@ int Count(PsNODE pHead,PsNODE pTail)
 //================================================================================================//
 //Local variables:                                                                                //
 //1. PsNODE : Pointer to the new node .                                                           //
-//================================================================================================//
-//Algorithm:                                                                                      //
-//1. Allocate memory for the new node .                                                           //
-//2. Fill the new node with the data .                                                            //
-//3. If the linked list is empty, update the first pointer with the address of the new node .     //
-//4. If the linked list contains at least one node, update the Next pointer of the new node with  //
-//   the address of the first node and update the first pointer with the address of the new node. //
-//5. Update the Next pointer of the last node to point to the new head node .                     //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void InsertFirst(PPsNODE pHead,PPsNODE pTail,int iNo)
 {
@@ -197,8 +163,6 @@ void InsertFirst(PPsNODE pHead,PPsNODE pTail,int iNo)
     }
 
     (*pTail) -> pNext = *pHead;
-
-    printf("Node with data %d inserted at the beginning of the singly circular linked list\n",iNo);
 }
 
 
@@ -214,15 +178,6 @@ void InsertFirst(PPsNODE pHead,PPsNODE pTail,int iNo)
 //================================================================================================//
 //Local variables:                                                                                //
 //1. PsNODE : Pointer to the new node .                                                           //
-//================================================================================================//
-//Algorithm:                                                                                      //
-//1. Allocate memory for the new node .                                                           //
-//2. Fill the new node with the data .                                                            //
-//3. If the linked list is empty, update the first pointer with the address of the new node .     //
-//4. If the linked list contains at least one node, update the Next pointer of the                //
-//   last node with the address of the new node and update the last pointer with the address of   //
-//   the new node.                                                                                //
-//5. Update the Next pointer of the new node to point to the head node .                          //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void InsertLast(PPsNODE pHead,PPsNODE pTail,int iNo)
 {
@@ -247,8 +202,6 @@ void InsertLast(PPsNODE pHead,PPsNODE pTail,int iNo)
     }
 
     (*pTail) -> pNext = *pHead;
-
-    printf("Node with data %d inserted at the end of the singly circular linked list\n",iNo);
 }
 
 
@@ -266,82 +219,38 @@ void InsertLast(PPsNODE pHead,PPsNODE pTail,int iNo)
 //================================================================================================//
 //Local variables:                                                                                //
 //1. PsNODE : Pointer to the new node .                                                           //
-//2. int : Size of the linked list .                                                              //
-//3. int : Counter variable .                                                                     //
-//4. PsNODE : temporary pointer to traverse the linked list .                                     //
-//================================================================================================//
-//Algorithm:                                                                                      //
-//1. If the linked list is empty, display a message that the linked list is empty.                //
-//2. Count the number of nodes in the linked list .                                               //
-//3. If the position is invalid, display a message that the position is invalid.                  //
-//4. Fill the new node with the data .                                                            //
-//5. If the position is 1, update the Next pointer of the new node with the address of the first  //
-//   node and update the first pointer with the address of the new node.                          //
-//6. If the position is last,update the Next pointer of the last node with the address of the new //
-//   node and update the last pointer with the address of the new node.                           //
-//7. If the position is random, traverse till the node before the specified position and update   //
-//   the Next pointer of the new node with the address of the Next node and update the Next       //
-//   pointer of the previous node with the address of the new node.                               //
-//8. Update the Next pointer of the last node to point to the head node .                         //
+//2. PsNODE : temporary pointer to traverse the linked list .                                     //
+//3. int : Size of the linked list .                                                              //
+//4. int : Counter variable .                                                                     //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void InsertAtPosition(PPsNODE pHead,PPsNODE pTail,int iNo,int iPosition)
 {
-    //Initialize a new node
-    PsNODE PsNewNode = NULL;
-    PsNewNode = (PsNODE)malloc(sizeof(sNODE));
-
-    //Filling the node with data
-    PsNewNode -> iData = iNo;
-    PsNewNode -> pNext = NULL;
-
     //Counting number of nodes
     int iSize = Count(*pHead,*pTail);
-    int iCnt = 0;
 
-    if((iPosition < 1) || (iPosition > (iSize + 1)))//If position is invalid
+    if(iPosition == 1)//If position is 1
     {
-
-        while(iCnt <= 2)
-        {
-            printf("Invalid position\n");
-
-            printf("Enter valid position : \n");
-            scanf("%d",&iPosition);
-
-            if((iPosition >= 1) && (iPosition <= (iSize + 1)))
-            {
-                InsertAtPosition(pHead,pTail,iNo,iPosition);
-                return;
-            }
-
-            iCnt++;
-        }
-
-        printf("Wrong input entered 3 times , call function again .\n");
-
+        InsertFirst(pHead,iNo);
         return;
-    }
-    else if((*pHead == NULL) && (*pTail == NULL))//If linkedlist is empty
-    {
-        *pHead = PsNewNode;
-        *pTail = PsNewNode;
-    }
-    else if(iPosition == 1)//If position is 1
-    {
-        PsNewNode -> pNext = *pHead;
-        *pHead = PsNewNode;
     }
     else if(iPosition == (iSize + 1))//If position last
     {
-        PsNewNode -> pNext = *pHead;
-        (*pTail) -> pNext = PsNewNode;
-        *pTail = PsNewNode;
+        InsertLast(pHead,iNo);
+        return;
     }
     else//Random position
     {
+        //Initialize a new node
+        PsNODE PsNewNode = NULL;
+        PsNewNode = (PsNODE)malloc(sizeof(sNODE));
+
+        //Filling the node with data
+        PsNewNode -> iData = iNo;
+        PsNewNode -> pNext = NULL;
+
         PsNODE ptemp = *pHead;
 
-        for(iCnt = 1;iCnt < (iPosition - 1);iCnt++)
+        for(int iCnt = 1;iCnt < (iPosition - 1);iCnt++)
         {
             ptemp = ptemp -> pNext;
         }
@@ -351,8 +260,6 @@ void InsertAtPosition(PPsNODE pHead,PPsNODE pTail,int iNo,int iPosition)
     }
 
     (*pTail) -> pNext = *pHead;
-
-    printf("Node with data %d inserted at position %d in the singly circular linked list\n",iNo,iPosition);
 }
 
 
@@ -363,47 +270,34 @@ void InsertAtPosition(PPsNODE pHead,PPsNODE pTail,int iNo,int iPosition)
 //1. PPsNODE : Address of the first pointer of the linked list .                                  //
 //2. PPsNODE : Address of the last pointer of the linked list .                                   //
 //================================================================================================//
-//Return: void                                                                                    //
+//Return: int                                                                                     //
 //================================================================================================//
-//Local variables: None                                                                           //
-//================================================================================================//
-//Algorithm:                                                                                      //
-//1. If the linked list is empty, display a message that the linked list is empty.                //
-//2. If the linked list contains one node, free the memory of the first node and update both      //
-//   the first and last pointers to NULL .                                                        //
-//3. If the linked list contains multiple nodes,update the first pointer with the Next pointer of //
-//   the first node, free the memory of the last node,and update the Next pointer of the new head //
-//   to point to the tail node .                                                                  //
-//4. Update the Next pointer of the tail to point to the new head node .                          //
+//Local variables:                                                                                //
+//1. int : variable to return the deleted data                                                    //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-void DeleteFirst(PPsNODE pHead,PPsNODE pTail)
+int DeleteFirst(PPsNODE pHead,PPsNODE pTail)
 {
-    if((*pHead == NULL) && (*pTail == NULL))//If linkedlist is empty
-    {
-        printf("Linkedlist is empty\n");
-        return;
-    }
-    else if(*pHead == *pTail)//If linkedlist contains one node
-    {
-        *pTail = NULL;
+    int iDeleted = 0;
 
-        printf("Node with data %d deleted from the singly circular linked list\n",(*pHead) -> iData);
+    if(*pHead == *pTail)//If linkedlist contains one node
+    {
+        iDeleted = (*pHead) -> iData;
 
         free(*pHead);
         *pHead = NULL;
-
-        return;
+        *pTail = NULL;
     }
     else//If linkedlist contains multiple nodes
     {
         *pHead = (*pHead) -> pNext;
 
-        printf("Node with data %d deleted from the beginning of the singly circular linked list\n",(*pTail) -> pNext -> iData);
-
+        iDeleted = (*pTail) -> pNext -> iData;
         free((*pTail) -> pNext);
+
+        (*pTail) -> pNext = *pHead;
     }
 
-    (*pTail) -> pNext = *pHead;
+    return iDeleted;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -413,34 +307,23 @@ void DeleteFirst(PPsNODE pHead,PPsNODE pTail)
 //1. PPsNODE : Address of the first pointer of the linked list .                                  //
 //2. PPsNODE : Address of the last pointer of the linked list .                                   //
 //================================================================================================//
-//Return: void                                                                                    //
+//Return: int                                                                                     //
 //================================================================================================//
 //Local variables:                                                                                //
 //1. PsNODE : temporary pointer to traverse the linked list .                                     //
-//================================================================================================//
-//Algorithm:                                                                                      //
-//1. If the linked list is empty, display a message that the linked list is empty and return .    //
-//2. If the linked list contains one node, free the memory of the first node and update both the  //
-//   first and last pointers to NULL .                                                            //
-//3. If linked list contains multiple nodes, traverse till the second last node and delete the    //
-//   last node.                                                                                   //
-//4. Update the Next pointer of the second last node to point to the head node .                  //
-//5. Update the Next pointer of the tail to point to the head node .                              //
+//2. int : variable to return the deleted data                                                    //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-void DeleteLast(PPsNODE pHead,PPsNODE pTail)
+int DeleteLast(PPsNODE pHead,PPsNODE pTail)
 {
-    if((*pHead == NULL) && (*pTail == NULL))//If linkedlist is empty
+    int iDeleted = 0;
+
+    if(*pHead == *pTail)//If linkedlist contains one node
     {
-        printf("Linkedlist is empty\n");
-        return;
-    }
-    else if(*pHead == *pTail)//If linkedlist contains one node
-    {
-        *pTail = NULL;
+        iDeleted = (*pHead) -> iData;
+
         free(*pHead);
         *pHead = NULL;
-
-        printf("Node with data %d deleted from the singly circular linked list\n",(*pHead) -> iData);
+        *pTail = NULL;
     }
     else//If linkedlist contains atleast two node
     {
@@ -451,12 +334,13 @@ void DeleteLast(PPsNODE pHead,PPsNODE pTail)
             ptemp = ptemp -> pNext;
         }
 
-        printf("Node with data %d deleted from the end of the singly circular linked list\n",ptemp -> pNext -> iData);
-
+        iDeleted = (*pTail) -> pNext -> iData;
         free(ptemp -> pNext);
         *pTail = ptemp;
         (*pTail) -> pNext = *pHead;
     }
+
+    return iDeleted;
 }
 
 
@@ -469,96 +353,31 @@ void DeleteLast(PPsNODE pHead,PPsNODE pTail)
 //2. PPsNODE : Address of the last pointer of the linked list .                                   //
 //3. int : Position at which the new node is to be inserted .                                     //
 //================================================================================================//
-//Return: void                                                                                    //
+//Return: int                                                                                     //
 //================================================================================================//
 //Local variables:                                                                                //
-//1. int : Size of the linked list .                                                              //
-//2. int : Counter variable .                                                                     //
-//3. PsNODE : temporary pointer to traverse the linked list .                                     //
-//4. PsNODE : temporary pointer to delete the node .                                              //
-//================================================================================================//
-//Algorithm:                                                                                      //
-//1. If the linked list is empty, display a message that the linked list is empty and return .    //
-//2. Count the number of nodes in the linked list .                                               //
-//3. If the position is invalid, display a message that the position is invalid.                  //
-////4. If the position is 1, update the first pointer with the Next pointer of the first node and //
-//   free the memory of the first node.                                                           //
-//5. If the position is last, traverse till the second last node and delete the last node.        //
-//6. If the position is random, traverse till the node before the specified position and update   //
-//   the Next pointer of the previous node with the Next pointer of the node to be deleted and    //
-//   free the memory of the node to be deleted.                                                   //
-//7. Update the Next pointer of the last node to point to the head node .                         //
+//1. PsNODE : temporary pointer to traverse the linked list .                                     //
+//2. PsNODE : temporary pointer to delete the node .                                              //
+//3. int : Size of the linked list .                                                              //
+//4. int : Counter variable .                                                                     //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-void DeleteAtPosition(PPsNODE pHead,PPsNODE pTail,int iPosition)
+int DeleteAtPosition(PPsNODE pHead,PPsNODE pTail,int iPosition)
 {
-    if((*pHead == NULL) && (*pTail == NULL))//If linkedlist is empty
-    {
-        printf("Linkedlist is empty\n");
-        return;
-    }
-
     //Counting number of nodes
-    int iSize = Count(*pHead,*pTail);
+    int iSize = Count(*pHead);
     int iCnt = 0;
 
-    if((iPosition < 1) || (iPosition > iSize))//If position is invalid
+    if(iPosition == 1)//If position is 1
     {
-        while(iCnt <= 2)
-        {
-            printf("Invalid position\n");
-
-            printf("Enter valid position : \n");
-            scanf("%d",&iPosition);
-
-            if((iPosition >= 1) && (iPosition <= iSize))
-            {
-                DeleteAtPosition(pHead,pTail,iPosition);
-                return;
-            }
-
-            iCnt++;
-        }
-
-        printf("Wrong input entered 3 times , call function again .\n");
-
-        return;
-    }
-
-
-    if(*pHead == *pTail)//If linkedlist contains one node
-    {
-        *pTail = NULL;
-
-        printf("Node with data %d deleted from the singly circular linked list\n",(*pHead) -> iData);
-
-        free(*pHead);
-        *pHead = NULL;
-    }
-    else if(iPosition == 1)//If position is 1
-    {
-        *pHead = (*pHead) -> pNext;
-
-        printf("Node with data %d deleted from the beginning of the singly circular linked list\n",(*pTail) -> pNext -> iData);
-
-        free((*pTail) -> pNext);
-        (*pTail) -> pNext = *pHead;
+        iCnt = DeleteFirst(pHead,pTail);
+        return iCnt;
     }
     else if(iPosition == iSize)//If position last
     {
-        PsNODE ptemp = *pHead;
-
-        while(ptemp -> pNext != *pTail)
-        {
-            ptemp = ptemp -> pNext;
-        }
-
-        printf("Node with data %d deleted from the end of the singly circular linked list\n",ptemp -> pNext -> iData);
-
-        free(ptemp -> pNext);
-        *pTail = ptemp;
-        (*pTail) -> pNext = *pHead;
+        iCnt = DeleteLast(pHead,pTail);
+        return iCnt;
     }
-    else//Random position
+    else
     {
         PsNODE ptemp = *pHead;
         PsNODE ptempdelete = NULL;
@@ -571,9 +390,10 @@ void DeleteAtPosition(PPsNODE pHead,PPsNODE pTail,int iPosition)
         ptempdelete = ptemp -> pNext;
         ptemp -> pNext = ptemp -> pNext -> pNext;
 
-        printf("Node with data %d deleted from position %d of the singly circular linked list\n",ptempdelete -> iData,iPosition);
-
+        iCnt = ptempdelete -> iData;
         free(ptempdelete);
+        ptempdelete = NULL;
+        return iCnt;
     }
 }
 
@@ -590,22 +410,18 @@ void DeleteAtPosition(PPsNODE pHead,PPsNODE pTail,int iPosition)
 //================================================================================================//
 //1. Search() : Searches for a specific value in the list                                         //
 //2. Reverse() : Reverses the order of the list                                                   //
-//3. Concat() : Concatenates two lists                                                            //
-//4. Merge() : Merges two sorted lists                                                            //
-//5. Sort() : Sorts the list in ascending order                                                   //
-//6. UpdateNoforNo() : Updates the value of a specific node in exchange to some value             //
-//7. UpdateNoForPosition() : Updates the value of a specific node at specific position            //
-//8. InsertBefore() : Inserts a new node before a specific node                                   //
-//9. InsertAfter() : Inserts a new node after a specific node                                     //
-//10. DeleteBefore() : Deletes the node before a specific node                                    //
-//11. DeleteAfter() : Deletes the node after a specific node                                      //
-//12. DeleteList() : Deletes the entire list                                                      //
-//13. RemoveDuplicates() : Removes duplicate nodes from the list                                  //
-//14. FindMiddle() : Finds the middle node of the list                                            //
-//15. FindDifference() : Finds the difference of two lists                                        //
-//16. FindKthNodeFromStart() : Finds the kth node from the start of the list                      //
-//17. FindKthNodeFromMiddle() : Finds the kth node from the middle of the list                    //
-//18. FindKthNodeFromEnd() : Finds the kth node from the end of the list                          //
+//3. Sort() : Sorts the list in ascending order                                                   //
+//4. UpdateNoforNo() : Updates the value of a specific node in exchange to some value             //
+//5. UpdateNoForPosition() : Updates the value of a specific node at specific position            //
+//6. InsertBefore() : Inserts a new node before a specific node                                   //
+//7. InsertAfter() : Inserts a new node after a specific node                                     //
+//8. DeleteBefore() : Deletes the node before a specific node                                     //
+//9. DeleteAfter() : Deletes the node after a specific node                                       //
+//10. DeleteList() : Deletes the entire list                                                      //
+//11. FindMiddle() : Finds the middle node of the list                                            //
+//12. FindKthNodeFromStart() : Finds the kth node from the start of the list                      //
+//13. FindKthNodeFromMiddle() : Finds the kth node from the middle of the list                    //
+//14. FindKthNodeFromEnd() : Finds the kth node from the end of the list                          //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -618,44 +434,30 @@ void DeleteAtPosition(PPsNODE pHead,PPsNODE pTail,int iPosition)
 //2. PsNODE : Address of the last pointer of the linked list .                                    //
 //3. int : Value to be searched in the linked list .                                              //
 //================================================================================================//
-//Return: boolean                                                                                 //
+//Return: int                                                                                     //
 //================================================================================================//
 //Local variables:                                                                                //
 //1. int : Counter variable & Position variable in one .                                          //
 //2. int : Size of the linked list .                                                              //
-//================================================================================================//
-//Algorithm:                                                                                      //
-//1. If the linked list is empty, display a message that the linked list is empty and return .    //
-//2. Count the number of nodes in the linked list .                                               //
-//3. Traverse the linked list till the last node and compare the data of each node with the       //
-//   specified value. If the value is found, display a message that the value is found and return.//
-//4. If the value is not found, return false.                                                     //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-bool Search(PsNODE pHead,PsNODE pTail,int iSearch)
+int Search(PsNODE pHead,PsNODE pTail,int iSearch)
 {
-    if((pHead == NULL) && (pTail == NULL))
-    {
-        printf("Linkedlist is empty\n");
-        return false;
-    }
-
-    int iPosition = 1;
     int iSize = Count(pHead,pTail);
+    int iPosition = 1;
 
     while(iPosition <= iSize)
     {
         if(pHead -> iData == iSearch)
         {
             printf("Element %d is found at position %d in singly circular linked list\n",iSearch,iPosition);
-            return true;
+            return iPosition;
         }
 
         pHead = pHead -> pNext;
         iPosition++;
     }
 
-    printf("Element %d not found in singly circular linked list\n",iSearch);
-    return false;
+    return -1;
 }
 
 
@@ -669,44 +471,30 @@ bool Search(PsNODE pHead,PsNODE pTail,int iSearch)
 //3. int : Value to be searched in the linked list .                                              //
 //4. int : Value to be updated in the linked list .                                               //
 //================================================================================================//
-//Return: void                                                                                    //
+//Return: bool                                                                                    //
 //================================================================================================//
 //Local variables:                                                                                //
 //1. int : Counter variable & Position variable in one .                                          //
 //2. int : Size of the linked list .                                                              //
-//================================================================================================//
-//Algorithm:                                                                                      //
-//1. Count the number of nodes in the linked list .                                               //
-//2. Traverse the linked list till the last node and compare the data of each node with the       //
-//   specified value. If the value is found, update the data of the node with the specified value.//
-//3. If the value is not found, display a message that the value is not found.                    //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-void UpdateNoForNo(PsNODE pHead,PsNODE pTail,int iSearch,int iUpdate)
+bool UpdateNoForNo(PsNODE pHead,PsNODE pTail,int iSearch,int iUpdate)
 {
-    if((pHead == NULL) && (pTail == NULL))
-    {
-        printf("Linkedlist is empty\n");
-        return;
-    }
-
-    int iPosition = 1;
     int iSize = Count(pHead,pTail);
+    int iPosition = 1;
 
     while(iPosition <= iSize)
     {
         if(pHead -> iData == iSearch)
         {
             pHead -> iData = iUpdate;
-            printf("Element %d has been updated to %d in singly circular linked list\n",iSearch,iUpdate);
-
-            return;
+            return true;
         }
 
         pHead = pHead -> pNext;
         iPosition++;
     }
 
-    printf("Element %d not found in singly circular linked list\n",iSearch);
+    return false;
 }
 
 
@@ -725,114 +513,23 @@ void UpdateNoForNo(PsNODE pHead,PsNODE pTail,int iSearch,int iUpdate)
 //Local variables:                                                                                //
 //1. int : Counter variable & Position variable in one .                                          //
 //2. int : Size of the linked list .                                                              //
-//================================================================================================//
-//Algorithm:                                                                                      //
-//1. Count the number of nodes in the linked list .                                               //
-//2. Traverse the linked list till the last node and compare the data of each node with the       //
-//   specified value. If the value is found, update the data of the node with the specified value.//
-//3. If the value is not found, display a message that the value is not found.                    //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void UpdateNoForPosition(PsNODE pHead,PsNODE pTail,int iUpdate,int iPosition)
 {
-    if(pHead == NULL)
-    {
-        printf("Linkedlist is empty\n");
-        return;
-    }
-
-    int iCnt = 0;
     int iSize = Count(pHead,pTail);
-
-    if((iPosition < 1) || (iPosition > (iSize + 1)))
-    {
-        for(iCnt = 0;iCnt <= 2;iCnt++)
-        {
-            printf("Invalid position\n");
-            printf("Enter valid position : \n");
-            scanf("%d",&iPosition);
-
-            if((iPosition >= 1) && (iPosition <= (iSize + 1)))
-            {
-                UpdateNoForPosition(pHead,pTail,iUpdate,iPosition);
-                return;
-            }
-        }
-
-        printf("Wrong input entered 3 times , call function again .\n");
-
-        return;
-    }
-
-    iCnt = 1;
+    int iCnt = 0;
 
     while(iCnt <= iSize)
     {
         if(iCnt == iPosition)
         {
             pHead -> iData = iUpdate;
-            printf("Element at position %d has been updated to %d in singly circular linked list\n",iPosition,iUpdate);
-
             return;
         }
 
         pHead = pHead -> pNext;
         iCnt++;
     }
-}
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-//Concat() Function: Concats two singly circular linked list .                                    //
-//================================================================================================//
-//Parameters:                                                                                     //
-//1. PPsNODE : Address of the first pointer of the linked list 1 .                                //
-//2. PPsNODE : Address of the first pointer of the linked list 2 .                                //
-//3. PPsNODE : Address of the last pointer of the linked list 1 .                                 //
-//4. PPsNODE : Address of the last pointer of the linked list 2 .                                 //
-//================================================================================================//
-//Return: void                                                                                    //
-//================================================================================================//
-//Local variables: None                                                                           //
-//================================================================================================//
-//Algorithm:                                                                                      //
-//1. If both linked lists are empty,display a message that both linked lists are empty and return //
-//2. If the first linked list is empty, display a message that the first linked list              //
-//   is empty and return.                                                                         //
-//3. If the second linked list is empty, display a message that the second linked list            //
-//   is empty and return.                                                                         //
-//4. Update the Next pointer of the last node of the first linked list to point to the first node //
-//   of the second linked list and update the Next pointer of the last node of the second linked  //
-//   list to point to the first node of the first linked list.                                    //
-//5. Update the last pointer of the first linked list to point to the last node of the second     //
-//   linked list.                                                                                 //
-//6. Set the first and last pointers of the second linked list to NULL to free the memory of the  //
-//   second linked list.                                                                          //
-////////////////////////////////////////////////////////////////////////////////////////////////////
-void Concat(PPsNODE pHead1,PPsNODE pHead2,PPsNODE pTail1,PPsNODE pTail2)
-{
-    if((*pHead1 == NULL) && (*pHead2 == NULL) && (*pTail1 == NULL) && (*pTail2 == NULL))
-    {
-        printf("Both linkedlist are empty\n");
-        return;
-    }
-    else if((*pHead1 == NULL) && (*pTail1 == NULL))
-    {
-        printf("First linkedlist is empty\n");
-        return;
-    }
-    else if((*pHead2 == NULL) && (*pTail2 == NULL))
-    {
-        printf("Second linkedlist is empty\n");
-        return;
-    }
-
-    (*pTail1) -> pNext = *pHead2;
-    (*pTail2) -> pNext = *pHead1;
-
-    *pTail1 = *pTail2;
-
-    *pHead2 = NULL; //Freeing the second linked list
-    *pTail2 = NULL; //Freeing the second linked list
 }
 
 
@@ -850,53 +547,10 @@ void Concat(PPsNODE pHead1,PPsNODE pHead2,PPsNODE pTail1,PPsNODE pTail2)
 //Local variables:                                                                                //
 //1. PsNODE : temporary pointer to traverse the linked list .                                     //
 //2. PsNODE : Pointer to store the new node                                                       //
-//3. int : Size of the linked list .                                                              //
-//4. int : Counter variable .                                                                     //
-//================================================================================================//
-//Algorithm:                                                                                      //
-//1. If the linked list is empty, display a message that the linked list is empty.                //
-//2. Count the number of nodes in the linked list .                                               //
-//3. If the position is invalid, display a message that the position is invalid.                  //
-//4. If the position is 1, update the Next pointer of the new node with the address of the first  //
-//   node and update the first pointer with the address of the new node.                          //
-//5. If the position is last,update the Next pointer of the last node with the address of the new //
-//   node and update the last pointer with the address of the new node.                           //
-//6. If the position is random, traverse till the node before the specified position and update   //
-//   the Next pointer of the new node with the address of the Next node and update the            //
-//   Next pointer of the previous node with the address of the new node.                          //
-//7. Update the Next pointer of the last node to point to the head node .                         //
+//3. int : Counter variable .                                                                     //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void InsertBefore(PPsNODE pHead,PPsNODE pTail,int iNo,int iPosition)
 {
-    if((*pHead == NULL) && (*pTail == NULL))//If linkedlist is empty
-    {
-        printf("linkedlist are empty\n");
-        return;
-    }
-
-    int iSize = Count(*pHead,*pTail);
-    int iCnt = 0;
-
-    if((iPosition < 1) || (iPosition > (iSize)))
-    {
-        for(iCnt = 0;iCnt <= 2;iCnt++)
-        {
-            printf("Invalid position\n");
-            printf("Enter valid position : \n");
-            scanf("%d",&iPosition);
-
-            if((iPosition >= 1) && (iPosition <= (iSize)))
-            {
-                InsertBefore(pHead,pTail,iNo,iPosition);
-                return;
-            }
-        }
-
-        printf("Wrong input entered 3 times , call function again .\n");
-
-        return;
-    }
-
     //Initialize a new node
     PsNODE PsNewNode = NULL;
     PsNewNode = (PsNODE)malloc(sizeof(sNODE));
@@ -914,7 +568,7 @@ void InsertBefore(PPsNODE pHead,PPsNODE pTail,int iNo,int iPosition)
     {
         PsNODE ptemp = *pHead;
 
-        for(iCnt = 1;iCnt < (iPosition - 1);iCnt++)
+        for(int iCnt = 1;iCnt < (iPosition - 1);iCnt++)
         {
             ptemp = ptemp -> pNext;
         }
@@ -945,50 +599,9 @@ void InsertBefore(PPsNODE pHead,PPsNODE pTail,int iNo,int iPosition)
 //2. PsNODE : Pointer to store the new node                                                       //
 //3. int : Size of the linked list .                                                              //
 //4. int : Counter variable .                                                                     //
-//================================================================================================//
-//Algorithm:                                                                                      //
-//1. If the linked list is empty, display a message that the linked list is empty.                //
-//2. Count the number of nodes in the linked list .                                               //
-//3. If the position is invalid, display a message that the position is invalid.                  //
-//4. If the position is the last, update the Next pointer of the new node with the address of the //
-//   first node and update the Next pointer of the last node with the address of the new          //
-//   node and update the last pointer with the address of the new node.                           //
-//5. If the position is random, traverse till the node before the specified position and update   //
-//   the Next pointer of the new node with the address of the Next node and update the            //
-//   Next pointer of the previous node with the address of the new node.                          //
-//6. Update the Next pointer of the last node to point to the head node .                         //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void InsertAfter(PPsNODE pHead,PPsNODE pTail,int iNo,int iPosition)
 {
-    if((*pHead == NULL) && (*pTail == NULL))
-    {
-        printf("linkedlist are empty\n");
-        return;
-    }
-
-    int iSize = Count(*pHead,*pTail);
-    int iCnt = 0;
-
-    if((iPosition < 1) || (iPosition > (iSize)))
-    {
-        for(iCnt = 0;iCnt <= 2;iCnt++)
-        {
-            printf("Invalid position\n");
-            printf("Enter valid position : \n");
-            scanf("%d",&iPosition);
-
-            if((iPosition >= 1) && (iPosition <= (iSize)))
-            {
-                InsertAfter(pHead,pTail,iNo,iPosition);
-                return;
-            }
-        }
-
-        printf("Wrong input entered 3 times , call function again .\n");
-
-        return;
-    }
-
     //Initialize a new node
     PsNODE PsNewNode = NULL;
     PsNewNode = (PsNODE)malloc(sizeof(sNODE));
@@ -996,6 +609,8 @@ void InsertAfter(PPsNODE pHead,PPsNODE pTail,int iNo,int iPosition)
     //Filling the node with data
     PsNewNode -> iData = iNo;
     PsNewNode -> pNext = NULL;
+
+    int iSize = Count(*pHead,*pTail);
 
     if(iPosition == iSize)
     {
@@ -1007,7 +622,7 @@ void InsertAfter(PPsNODE pHead,PPsNODE pTail,int iNo,int iPosition)
     {
         PsNODE ptemp = *pHead;
 
-        for(iCnt = 1;iCnt <= (iPosition - 1);iCnt++)
+        for(int iCnt = 1;iCnt <= (iPosition - 1);iCnt++)
         {
             ptemp = ptemp -> pNext;
         }
@@ -1030,62 +645,23 @@ void InsertAfter(PPsNODE pHead,PPsNODE pTail,int iNo,int iPosition)
 //2. PPsNODE : Address of the last pointer of the linked list .                                   //
 //3. int : Position before which the node is to be deleted .                                      //
 //================================================================================================//
-//Return: void                                                                                    //
+//Return: int                                                                                     //
 //================================================================================================//
 //Local variables:                                                                                //
 //1. PsNODE : temporary pointer to traverse the linked list .                                     //
 //2. PsNODE : temporary pointer to delete the node .                                              //
 //3. int : Size of the linked list .                                                              //
 //4. int : Counter variable .                                                                     //
-//================================================================================================//
-//Algorithm:                                                                                      //
-//1. If the linked list is empty, display a message that the linked list is empty.                //
-//2. Count the number of nodes in the linked list .                                               //
-//3. If the position is invalid, display a message that the position is invalid.                  //
-//4. If the position is 2, update the first pointer with the Next pointer of the first node and   //
-//   free the memory of the first node.                                                           //
-//5. If the position is random, traverse till the node before the specified position and update   //
-//   the Next pointer of the previous node with the Next pointer of the node to be deleted        //
-//   and free the memory of the node to be deleted.                                               //
-//6. Update the Next pointer of the last node to point to the head node .                         //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-void DeleteBefore(PPsNODE pHead,PPsNODE pTail,int iPosition)
+int DeleteBefore(PPsNODE pHead,PPsNODE pTail,int iPosition)
 {
-    if((*pHead == NULL) && (*pTail == NULL))
-    {
-        printf("linkedlist are empty\n");
-        return;
-    }
-
     int iSize = Count(*pHead,*pTail);
     int iCnt = 0;
-
-    if((iPosition < 2) || (iPosition > (iSize)))
-    {
-        for(iCnt = 0;iCnt <= 2;iCnt++)
-        {
-            printf("Invalid position\n");
-            printf("Enter valid position : \n");
-            scanf("%d",&iPosition);
-
-            if((iPosition >= 2) && (iPosition <= (iSize)))
-            {
-                DeleteBefore(pHead,pTail,iPosition);
-                return;
-            }
-        }
-
-        printf("Wrong input entered 3 times , call function again .\n");
-
-        return;
-    }
 
     if(iPosition == 2)
     {
         *pHead = (*pHead) -> pNext;
-
-        printf("Node with data %d deleted from the beginning of the singly circular linked list\n",(*pTail) -> pNext -> iData);
-
+        iCnt = (*pTail) -> pNext -> iData;
         free((*pTail) -> pNext);
         (*pTail) -> pNext = *pHead;
     }
@@ -1102,9 +678,10 @@ void DeleteBefore(PPsNODE pHead,PPsNODE pTail,int iPosition)
         ptempdelete = ptemp -> pNext;
         ptemp -> pNext = ptemp -> pNext -> pNext;
 
-        printf("Node with data %d deleted from the singly circular linked list\n",ptempdelete -> iData);
+        iCnt = ptempdelete -> iData;
 
         free(ptempdelete);
+        ptempdelete = NULL;
     }
 }
 
@@ -1117,57 +694,19 @@ void DeleteBefore(PPsNODE pHead,PPsNODE pTail,int iPosition)
 //2. PPsNODE : Address of the last pointer of the linked list .                                   //
 //3. int : Position before which the new node is to be inserted .                                 //
 //================================================================================================//
-//Return: void                                                                                    //
+//Return: int                                                                                     //
 //================================================================================================//
 //Local variables:                                                                                //
 //1. PsNODE : temporary pointer to traverse the linked list .                                     //
 //2. PsNODE : temporary pointer to delete the node .                                              //
 //3. int : Size of the linked list .                                                              //
 //4. int : Counter variable .                                                                     //
-//================================================================================================//
-//Algorithm:                                                                                      //
-//1. If the linked list is empty, display a message that the linked list is empty.                //
-//2. Count the number of nodes in the linked list .                                               //
-//3. If the position is invalid, display a message that the position is invalid.                  //
-//4. If the position is last, traverse till the second last node and delete the last              //
-//   node. Update the Next pointer of the last node to point to the head node .                   //
-//5. If the position is random, traverse till the node before the specified position and update   //
-//   the Next pointer of the previous node with the Next pointer of the node to be deleted and    //
-//   free the memory of the node to be deleted.                                                   //
-//6. Update the Next pointer of the last node to point to the head node .                         //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-void DeleteAfter(PPsNODE pHead,PPsNODE pTail,int iPosition)
+int DeleteAfter(PPsNODE pHead,PPsNODE pTail,int iPosition)
 {
-    if((*pHead == NULL) && (*pTail == NULL))
-    {
-        printf("linkedlist are empty\n");
-        return;
-    }
-
+    PsNODE ptemp = *pHead;
     int iSize = Count(*pHead,*pTail);
     int iCnt = 0;
-
-    if((iPosition < 1) || (iPosition > (iSize - 1)))
-    {
-        for(iCnt = 0;iCnt <= 2;iCnt++)
-        {
-            printf("Invalid position\n");
-            printf("Enter valid position : \n");
-            scanf("%d",&iPosition);
-
-            if((iPosition >= 1) && (iPosition <= (iSize - 1)))
-            {
-                DeleteAfter(pHead,pTail,iPosition);
-                return;
-            }
-        }
-
-        printf("Wrong input entered 3 times , call function again .\n");
-
-        return;
-    }
-
-    PsNODE ptemp = *pHead;
 
     if(iPosition == (iSize - 1))
     {
@@ -1176,10 +715,9 @@ void DeleteAfter(PPsNODE pHead,PPsNODE pTail,int iPosition)
             ptemp = ptemp -> pNext;
         }
 
-        printf("Node with data %d deleted from end of the the singly circular linked list\n",ptemp -> pNext -> iData);
-
+        iCnt = ptemp -> pNext -> iData;
         free(ptemp -> pNext);
-        ptemp -> pNext = *pHead;
+        ptemp -> pNext = NULL;
         *pTail = ptemp;
     }
     else
@@ -1194,12 +732,15 @@ void DeleteAfter(PPsNODE pHead,PPsNODE pTail,int iPosition)
         ptempdelete = ptemp -> pNext;
         ptemp -> pNext = ptemp -> pNext -> pNext;
 
-        printf("Node with data %d deleted from the singly circular linked list\n",ptempdelete -> iData);
+        iCnt = ptempdelete -> iData;
 
         free(ptempdelete);
+        ptempdelete = NULL
     }
 
     (*pTail) -> pNext = *pHead;
+
+    return iDeleted;
 }
 
 
@@ -1213,48 +754,19 @@ void DeleteAfter(PPsNODE pHead,PPsNODE pTail,int iPosition)
 //Return: void                                                                                    //
 //================================================================================================//
 //Local variables: None                                                                           //
-//================================================================================================//
-//Algorithm:                                                                                      //
-//1. If the linked list is empty, display a message that the linked list is empty and return .    //
-//2. If the linked list is not empty, traverse the linked list and free the memory of each node   //
-//   one by one.                                                                                  //
-//3. Finally, free the first pointer and display a message that the linked list has been deleted. //
-//4. Set the first pointer and last pointer to NULL to avoid dangling pointers.                   //
-//5. Display a message that the linked list has been deleted.                                     //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void DeleteList(PPsNODE pHead,PPsNODE pTail)
 {
-    if((*pHead == NULL) && (*pTail == NULL))
-    {
-        printf("linkedlist is already empty\n");
-        return;
-    }
-
     do
     {
-        *pHead = (*pHead) -> pNext;
-
-        printf("Node with data %d deleted from the singly circular linked list\n",(*pTail) -> pNext -> iData);
-
+        (*pHead) = (*pHead) -> pNext;
         free((*pTail) -> pNext);
-        (*pTail) -> pNext = *pHead;
+        (*pTail) -> pNext = (*pHead);
     }while(*pHead != *pTail);
 
-    if((*pHead) == (*pTail))
-    {
-        printf("Node with data %d deleted from the singly circular linked list\n",(*pTail) -> iData);
-
-        free((*pTail));
-        *pTail = NULL;
-    }
-
-    *pHead = NULL;
     free(*pHead);
-
-    free(*pTail);
+    *pHead = NULL;
     *pTail = NULL;
-
-    printf("Singly Circular Linked List has been deleted\n");
 }
 
 
@@ -1271,26 +783,12 @@ void DeleteList(PPsNODE pHead,PPsNODE pTail)
 //1. PsNODE : temporary pointer to traverse the linked list .                                     //
 //2. PsNODE : temporary pointer to traverse the linked list .                                     //
 //3. int : temporary variable to store the data of the node .                                     //
-//================================================================================================//
-//Algorithm:                                                                                      //
-//1. If the linked list is empty, display a message that the linked list is empty and return .    //
-//2. If the linked list is not empty, traverse the linked list and compare the data               //
-//   of each node with the data of the next node. If the data of the first node is greater than   //
-//   the data of the next node, swap the data of the two nodes. Repeat this process till the last //
-//   node.                                                                                        //
-//3. Finally, display a message that the linked list has been sorted in ascending order.          //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void SortAscending(PsNODE pHead,PsNODE pTail)
 {
-    if((pHead == NULL) && (pTail == NULL))
-    {
-        printf("linkedlist is empty\n");
-        return;
-    }
-
-    int itransfer = 0;
     PsNODE ptemp1 = pHead;
     PsNODE ptemp2 = pHead;
+    int itransfer = 0;
 
     do
     {
@@ -1308,8 +806,6 @@ void SortAscending(PsNODE pHead,PsNODE pTail)
 
         ptemp1 = ptemp1 -> pNext;
     }while(ptemp1 != pHead);
-
-    printf("Singly Circular Linked List has been sorted as in ascending order\n");
 }
 
 
@@ -1325,25 +821,9 @@ void SortAscending(PsNODE pHead,PsNODE pTail)
 //Local variables:                                                                                //
 //1. PsNODE : temporary pointer to traverse the linked list .                                     //
 //2. PsNODE : temporary pointer to traverse the linked list .                                     //
-//================================================================================================//
-//Algorithm:                                                                                      //
-//1. If the linked list is empty, display a message that the linked list is empty and return .    //
-//2. If the linked list is not empty, traverse the linked list and reverse the order of data in   //
-//   each node.                                                                                   //
-//3. Finally,update the first pointer with the address of the last node and the last pointer with //
-//   the address of the first node. Update the Next pointer of the last node to point to the head //
-//   node.                                                                                        //
-//4. Display a message that the linked list's data has been reversed.                             //
-//5. Set the first pointer and last pointer to NULL to avoid dangling pointers.                   //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void Reverse(PPsNODE pHead,PPsNODE pTail)
 {
-    if((*pHead == NULL) && (*pTail == NULL))
-    {
-        printf("linkedlist is empty\n");
-        return;
-    }
-
     PsNODE pCurrent = *pHead;
     PsNODE ptempprev = *pTail;
     PsNODE ptempNext = NULL;
@@ -1361,8 +841,6 @@ void Reverse(PPsNODE pHead,PPsNODE pTail)
     *pTail = pCurrent;
 
     (*pTail) -> pNext = *pHead;
-
-    printf("Singly Circular Linked-List's data has been reversed\n");
 }
 
 
@@ -1379,26 +857,13 @@ void Reverse(PPsNODE pHead,PPsNODE pTail)
 //1. PsNODE : temporary pointer to traverse the linked list .                                     //
 //2. int : integer to store size of linkedlist .                                                  //
 //4. int : integer to store counter variable .                                                    //
-//================================================================================================//
-//Algorithm:                                                                                      //
-//1. If the linked list is empty, display a message that the linked list is empty.                //
-//2. Count the number of nodes in the linked list .                                               //
-//3. Traverse the linked list till the middle node and return the address of the middle node.     //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 PsNODE FindMiddleNode(PsNODE pHead, PsNODE pTail)
 {
-    if((pHead == NULL) && (pTail == NULL))
-    {
-        printf("linkedlist is empty\n");
-        return 0;
-    }
-
     PsNODE ptemp = pHead;
-
-    int iCnt = 0;
     int iSize = Count(pHead,pTail);
 
-    for(iCnt = 1;iCnt < ((iSize + 1)/2);iCnt++)
+    for(int iCnt = 1;iCnt < ((iSize + 1)/2);iCnt++)
     {
         ptemp = ptemp -> pNext;
     }
@@ -1413,62 +878,21 @@ PsNODE FindMiddleNode(PsNODE pHead, PsNODE pTail)
 //Parameters:                                                                                     //
 //1. PsNODE : Address of the first pointer of the linked list .                                   //
 //2. PsNODE : Address of the last pointer of the linked list .                                    //
+//3. int : integer to store kth position from start .                                             //
 //================================================================================================//
 //Return: PsNODE                                                                                  //
 //================================================================================================//
 //Local variables:                                                                                //
 //1. PsNODE : temporary pointer to traverse the linked list .                                     //
-//2. int : integer to store size of linkedlist .                                                  //
-//3. int : integer to store kth position from start .                                             //
-//4. int : integer to store counter variable .                                                    //
-//================================================================================================//
-//Algorithm:                                                                                      //
-//1. If the linked list is empty, display a message that the linked list is empty.                //
-//2. Count the number of nodes in the linked list .                                               //
-//3. If the kth position is invalid, display a message that the kth position is invalid.          //
-//4. Travel the linked list till the kth node from start and return the address of the kth node.  //
+//2. int : integer to store counter variable .                                                    //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-PsNODE FindKthNodeFromStart(PsNODE pHead, PsNODE pTail)
+PsNODE FindKthNodeFromStart(PsNODE pHead, PsNODE pTail,int iKth)
 {
-    if((pHead == NULL) && (pTail == NULL))
-    {
-        printf("linkedlist is empty\n");
-        return 0;
-    }
-
     PsNODE ptemp = pHead;
 
-    int iKth = 0;
-    printf("Enter the kth position from start : ");
-    scanf("%d",&iKth);
-    printf("\n");
-    int iCnt = 0;
-    int iSize = Count(pHead,pTail);
-
-
-    if((iKth < 1) || (iKth > iSize))
-    {
-        printf("Invalid position\n");
-
-        printf("Wrong input, call function again .\n");
-
-        return NULL;
-    }
-
-
-    for(iCnt = 1;iCnt < iKth;iCnt++)
+    for(int iCnt = 1;iCnt < iKth;iCnt++)
     {
         ptemp = ptemp -> pNext;
-    }
-
-    if(ptemp == NULL)
-    {
-        printf("Invalid position\n");
-        return NULL;
-    }
-    else
-    {
-        printf("Data in %d node from start is : %d\n",iKth,ptemp -> iData);
     }
 
     return ptemp;
@@ -1482,53 +906,20 @@ PsNODE FindKthNodeFromStart(PsNODE pHead, PsNODE pTail)
 //Parameters:                                                                                     //
 //1. PsNODE : Address of the first pointer of the linked list .                                   //
 //2. PsNODE : Address of the last pointer of the linked list .                                    //
+//3. int : integer to store kth position from middle .                                            //
+//4. int : integer to store direction of kth position from start or end .                         //
 //================================================================================================//
 //Return: PsNODE                                                                                  //
 //================================================================================================//
 //Local variables:                                                                                //
 //1. PsNODE : temporary pointer to traverse the linked list .                                     //
 //2. int : integer to store size of linkedlist .                                                  //
-//3. int : integer to store kth position from start .                                             //
-//4. int : integer to store counter variable .                                                    //
-//5. int : integer to store direction of kth position from start or end .                         //
-//================================================================================================//
-//Algorithm:                                                                                      //
-//1. If the linked list is empty, display a message that the linked list is empty.                //
-//2. Count the number of nodes in the linked list .                                               //
-//3. If the kth position is invalid, display a message that the kth position is invalid.          //
-//4. If the kth position is random, traverse the linked list till the kth node from middle and    //
-//   return the address of the kth node.                                                          //
+//3. int : integer to store counter variable .                                                    //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-PsNODE FindKthNodeFromMiddle(PsNODE pHead, PsNODE pTail)
+PsNODE FindKthNodeFromMiddle(PsNODE pHead, PsNODE pTail,int iKth,int iDirection)
 {
-    if((pHead == NULL) && (pTail == NULL))
-    {
-        printf("linkedlist is empty\n");
-        return 0;
-    }
-
     PsNODE ptemp = pHead;
-
-    int iKth = 0;
-    printf("Enter the kth position from middle : ");
-    scanf("%d",&iKth);
-    printf("\n");
-    int iDirection = 0;
-    printf("Kth node from start or end ? >>Press 1 : FOR start [OR] >>Press 2 : FOR end ::: Your choice : ");
-    scanf("%d",&iDirection);
-    printf("\n");
     int iSize = Count(pHead,pTail);
-    int iCnt = 0; 
-
-
-    if((iKth < 1) || (iKth >= ((iSize + 1)/2)))
-    {
-        printf("Invalid position\n");
-
-        printf("Wrong input, call function again .\n");
-
-        return NULL;
-    }
 
     if(iDirection == 1)
     {
@@ -1539,26 +930,9 @@ PsNODE FindKthNodeFromMiddle(PsNODE pHead, PsNODE pTail)
         iKth = ((iSize + 1)/2) + iKth;
     }
 
-    for(iCnt = 1;iCnt < iKth;iCnt++)
+    for(int iCnt = 1;iCnt < iKth;iCnt++)
     {
         ptemp = ptemp -> pNext;
-    }
-
-    if(ptemp == NULL)
-    {
-        printf("Invalid position\n");
-        return NULL;
-    }
-    else
-    {
-        if(iDirection == 1)
-        {
-            printf("Data in %d node from middle to start is : %d\n",iKth,ptemp -> iData);
-        }
-        else
-        {
-            printf("Data in %d node from middle to end is : %d\n",iKth,ptemp -> iData);
-        }
     }
 
     return ptemp;
@@ -1571,64 +945,23 @@ PsNODE FindKthNodeFromMiddle(PsNODE pHead, PsNODE pTail)
 //Parameters:                                                                                     //
 //1. PsNODE : Address of the first pointer of the linked list .                                   //
 //2. PsNODE : Address of the last pointer of the linked list .                                    //
+//3. int : variable as offset from end of list to find .                                          //
 //================================================================================================//
 //Return: PsNODE                                                                                  //
 //================================================================================================//
 //Local variables:                                                                                //
 //1. PsNODE : temporary pointer to traverse the linked list .                                     //
 //2. int : integer to store size of linkedlist .                                                  //
-//3. int : integer to store kth position from start .                                             //
-//4. int : integer to store counter variable .                                                    //
-//================================================================================================//
-//Algorithm:                                                                                      //
-//1. If the linked list is empty, display a message that the linked list is empty.                //
-//2. Count the number of nodes in the linked list .                                               //
-//3. If the kth position is invalid, display a message that the kth position is invalid.          //
-//4. If the kth position is random, traverse the linked list till the kth node from end and       //
-//   return the address of the kth node.                                                          //
+//3. int : integer to store counter variable .                                                    //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 PsNODE FindKthNodeFromEnd(PsNODE pHead,PsNODE pTail)
 {
-    if((pHead == NULL) && (pTail == NULL))
-    {
-        printf("linkedlist is empty\n");
-        return 0;
-    }
-
     PsNODE ptemp = pHead;
-
-    int iKth = 0;
-    printf("Enter the kth position from end : ");
-    scanf("%d",&iKth);
-    printf("\n");
-    int iCnt = 0;
     int iSize = Count(pHead,pTail);
 
-
-    if((iKth < 1) || (iKth > iSize))
-    {
-        printf("Invalid position\n");
-
-        printf("Wrong input, call function again .\n");
-
-        return NULL;
-    }
-
-    int iIndex = iSize - iKth + 1;
-
-    for(iCnt = 1;iCnt < iIndex;iCnt++)
+    for(int iCnt = 1;iCnt < (iSize - iKth + 1);iCnt++)
     {
         ptemp = ptemp -> pNext;
-    }
-
-    if(ptemp == NULL)
-    {
-        printf("Invalid position\n");
-        return NULL;
-    }
-    else
-    {
-        printf("Data in %d node from end is : %d\n",iKth,ptemp -> iData);
     }
 
     return ptemp;
@@ -1646,14 +979,6 @@ PsNODE FindKthNodeFromEnd(PsNODE pHead,PsNODE pTail)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //Manual() Function: A guide for the usage of singly-circular-linked-list .                       //
-//================================================================================================//
-//Parameters: None                                                                                //
-//================================================================================================//
-//Return: void                                                                                    //
-//================================================================================================//
-//Local variables: None                                                                           //
-//================================================================================================//
-//Algorithm: None                                                                                 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void Manual()
 {
