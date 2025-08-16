@@ -338,7 +338,7 @@ int DeleteLast(PPsNODE pHead)
 //================================================================================================//
 //Parameters:                                                                                     //
 //1. PPsNODE : Address of the first pointer of the linked list .                                  //
-//2. int : Position at which the new node is to be inserted .                                     //
+//2. int : Position at which the new node is to be deleted .                                      //
 //================================================================================================//
 //Return: int                                                                                     //
 //================================================================================================//
@@ -600,9 +600,9 @@ void InsertAfter(PPsNODE pHead,int iNo,int iPosition)
     {
         //InsertLast(pHead,iNo); ---> Can be used
 
-        while(ptemp ->pNext != NULL)
+        while(ptemp -> pNext != NULL)
         {
-            ptemp = ptemp ->pNext;
+            ptemp = ptemp -> pNext;
         }
 
         ptemp ->pNext = PsNewNode;
@@ -677,7 +677,7 @@ int DeleteBefore(PPsNODE pHead,int iPosition)
 //================================================================================================//
 //Parameters:                                                                                     //
 //1. PPsNODE : Address of the first pointer of the linked list .                                  //
-//2. int : Position before which the new node is to be inserted .                                 //
+//2. int : Position before which the new node is to be deleted .                                  //
 //================================================================================================//
 //Return: int                                                                                     //
 //================================================================================================//
