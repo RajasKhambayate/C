@@ -2,9 +2,6 @@
     Types of Data Structures : Linked-List , Queue , Stack , Tree , Graphs , Hash-Table & so on...
 
 This repository contains programs in C programming language.
-
 This repository contains programs in C++ programming language.
-
 This repository contains programs in Java programming language.
-
 This repository contains programs in Python programming language.
